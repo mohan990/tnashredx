@@ -301,7 +301,7 @@ get_header();
                         <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
                             With years of experience transforming elite athletes and high-performers, the philosophy is simple: cut the noise, focus on precise data-driven programming, and scale true structural transformation globally.
                         </p>
-                        <div style="display: flex; gap: 20px; align-items: center; margin-top: 20px; flex-wrap: wrap;">
+                        <div class="architect-cta" style="display: flex; gap: 20px; align-items: center; margin-top: 20px; flex-wrap: wrap;">
                             <a href="#contact" class="btn">Train With Maheshwaran</a>
 
                             <!-- Social icons grouped so they never split across lines -->

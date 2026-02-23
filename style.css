@@ -306,10 +306,11 @@ a:not(.site-branding a):not(.btn):hover {
   animation-delay: 0.3s;
 }
 
-/* Hero subtitle — slightly smaller, muted blue-white */
+/* Hero subtitle — bright white with shadow for video contrast */
 .hero-subtitle {
   font-size: 1.15rem !important;
-  color: rgba(190, 215, 255, 0.75) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85), 0 0 12px rgba(0, 0, 0, 0.5) !important;
   letter-spacing: 0.3px;
   font-family: var(--font-body);
   text-transform: none;
@@ -1116,13 +1117,16 @@ a:not(.site-branding a):not(.btn):hover {
 /* --- Breakpoint: tablet & mobile (â‰¤1024px) --- */
 @media (max-width: 1024px) {
 
-  /* Smaller badge on tablet/mobile — shorter string, compact ribbon */
+  /* On mobile/tablet: fixed position so it never fights the flex header layout */
   .limited-badge {
+    position: fixed;
+    top: 65px;   /* just below the sticky nav (~60px tall) */
     right: 10px;
+    z-index: 2000;
   }
 
   .badge-string {
-    height: 60px;
+    height: 55px;
   }
 
   .badge-ribbon {
@@ -1521,6 +1525,20 @@ a:not(.site-branding a):not(.btn):hover {
     font-size: 0.7rem;
     letter-spacing: 0.5px;
   }
+
+  /* Keep "Train With Maheshwaran" + icons on one row on narrow screens */
+  .architect-cta {
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    align-items: center;
+  }
+
+  .architect-cta .btn {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    white-space: nowrap;
+    flex-shrink: 1;
+  }
 }
 
 .stat-item {
@@ -1597,13 +1615,13 @@ a:not(.site-branding a):not(.btn):hover {
 
 .footer-bottom {
   padding: 30px 0;
-  text-align: left;
+  text-align: center;
 }
 
 .footer-brand {
   display: inline-flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 3px;
   font-size: 2rem;
   background: none;
@@ -2068,7 +2086,7 @@ a:not(.site-branding a):not(.btn):hover {
     font-size: 1.5rem;
     white-space: normal;
     line-height: 1.2;
-    margin: 0 0 10px;
+    margin: 0 auto 10px;
   }
 
   .footer-bottom {
