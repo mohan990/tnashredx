@@ -6,6 +6,9 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap">
+	<?php if ( ! has_site_icon() ) : ?>
+	<link rel="shortcut icon" href="<?php echo esc_url( home_url( '/favicon.ico' ) ); ?>" type="image/x-icon">
+	<?php endif; ?>
 	<?php wp_head(); ?>
 </head>
 

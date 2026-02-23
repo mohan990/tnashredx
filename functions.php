@@ -21,7 +21,7 @@ add_action( 'after_setup_theme', 'tna_shredx_setup' );
 // Optimised front-page <title> — targets "Gym in Bangalore", "Personal Training", etc.
 function tna_shredx_document_title( $title ) {
 	if ( is_front_page() ) {
-		$title['title']   = 'TNAShredX | Gym in Bangalore | Personal Training & Fitness Center';
+		$title['title']   = 'TNAShredX | Gym in Bangalore | Personal Training';
 		unset( $title['tagline'] );
 		unset( $title['site'] );
 	}
@@ -99,7 +99,7 @@ function tna_shredx_seo_tags() {
             $description = wp_trim_words( wp_strip_all_tags( $post->post_content ), 30, '...' );
         }
     } elseif ( is_front_page() ) {
-        $description = 'TNAShredX — Top Gym & Fitness Center in Bangalore. Expert Personal Training, Strength & Conditioning, CrossFit, and body recomposition programs. Online coaching worldwide by Maheshwaran ChandraMohan.';
+        $description = 'TNAShredX — Gym in Bangalore for personal training, CrossFit & body recomposition. Online fitness coaching worldwide.';
     } else {
         $description = get_bloginfo( 'description' );
     }
@@ -155,6 +155,7 @@ function tna_shredx_seo_tags() {
         echo '<meta property="og:image" content="' . $og_image . '" />' . "\n";
         echo '<meta property="og:image:width" content="1200" />' . "\n";
         echo '<meta property="og:image:height" content="630" />' . "\n";
+        echo '<meta property="og:image:alt" content="' . $title . '" />' . "\n";
     }
 
     echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
@@ -164,6 +165,7 @@ function tna_shredx_seo_tags() {
     echo '<meta name="twitter:description" content="' . $description . '" />' . "\n";
     if ( $og_image ) {
         echo '<meta name="twitter:image" content="' . $og_image . '" />' . "\n";
+        echo '<meta name="twitter:image:alt" content="' . $title . '" />' . "\n";
     }
 }
 add_action( 'wp_head', 'tna_shredx_seo_tags', 1 );
