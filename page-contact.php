@@ -1,9 +1,5 @@
 <?php
-/**
- * Template Name: Contact Page with Map
- */
 
-// Handle Contact Form Submission
 $form_status = '';
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_gym_form']) ) {
     if ( ! isset( $_POST['tna_contact_nonce'] ) || ! wp_verify_nonce( $_POST['tna_contact_nonce'], 'tna_contact_form' ) ) {
@@ -24,7 +20,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_gym_form']) )
     } else {
         $form_status = '<p style="color: var(--primary-color); background: rgba(204, 41, 54, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✘ Failed to send message. Please try again later.</p>';
     }
-    } // end nonce check
+    } 
 }
 
 get_header();
@@ -32,18 +28,15 @@ get_header();
 
 	<main id="primary" class="site-main">
 
-        <!-- Page Header -->
         <section class="hero-section hero-small">
             <div class="hero-content">
                 <h1><?php the_title(); ?></h1>
             </div>
         </section>
 
-        <!-- Contact & Map Section -->
         <section class="contact-section section-padding">
             <div class="container contact-grid">
                 
-                <!-- Contact Form & Info -->
                 <div class="contact-info content-box">
                     <h2>Get In Touch</h2>
                     <p style="margin-bottom: 20px; color: #ccc;">Fill out the form below to book a class or ask a question.</p>
@@ -89,9 +82,7 @@ get_header();
                     </div>
                 </div>
 
-                <!-- Google Maps Embed -->
                 <div class="contact-map">
-                    <!-- Standard Google Maps HTML Embed -->
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 

@@ -1,7 +1,4 @@
 <?php
-/**
- * Theme functions and definitions
- */
 
 if ( ! function_exists( 'tna_gym_setup' ) ) :
 	function tna_gym_setup() {
@@ -9,7 +6,6 @@ if ( ! function_exists( 'tna_gym_setup' ) ) :
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'custom-logo', array(
-			'height'      => 80,
 			'width'       => 200,
 			'flex-height' => true,
 			'flex-width'  => true,
@@ -22,18 +18,12 @@ if ( ! function_exists( 'tna_gym_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'tna_gym_setup' );
 
-/**
- * Enqueue scripts and styles.
- */
 function tna_gym_scripts() {
     $theme_version = filemtime( get_stylesheet_directory() . '/style.css' );
 	wp_enqueue_style( 'shiny-gym-style', get_stylesheet_uri(), array(), $theme_version );
 }
 add_action( 'wp_enqueue_scripts', 'tna_gym_scripts' );
 
-/**
- * Register Custom Post Type for Training Sessions
- */
 function tna_gym_custom_post_type() {
 	$labels = array(
 		'name'                  => _x( 'Training Sessions', 'Post Type General Name', 'shiny-gym' ),
@@ -74,7 +64,7 @@ function tna_gym_custom_post_type() {
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'menu_position'         => 5,
-		'menu_icon'             => 'dashicons-universal-access', // Adds a cool icon in admin menu
+		'menu_icon'             => 'dashicons-universal-access', 
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -87,14 +77,9 @@ function tna_gym_custom_post_type() {
 }
 add_action( 'init', 'tna_gym_custom_post_type', 0 );
 
-/**
- * Comprehensive SEO Tags: meta description, keywords, robots, author,
- * geo tags, Open Graph, Twitter Card, canonical
- */
 function tna_gym_seo_tags() {
     global $post;
 
-    // --- Description ---
     if ( is_singular() && ! empty( $post ) ) {
         if ( has_excerpt( $post->ID ) ) {
             $description = wp_strip_all_tags( get_the_excerpt( $post->ID ) );
@@ -108,7 +93,6 @@ function tna_gym_seo_tags() {
     }
     $description = esc_attr( $description );
 
-    // --- Keywords (front page gets specific local + service keywords) ---
     if ( is_front_page() ) {
         $keywords = 'CrossFit coaching Bangalore, online CrossFit coach India, functional fitness training Bangalore, online personal trainer Bangalore, body recomposition coach India, remote fitness coaching India, fat loss coach Bangalore, metabolic reset program, online fitness transformation India, elite performance coaching, ShredX program, TNA fitness coach, online strength training India, functional fitness coach Bangalore';
     } elseif ( is_singular() && ! empty( $post ) ) {
@@ -117,13 +101,10 @@ function tna_gym_seo_tags() {
         $keywords = 'CrossFit Bangalore, online fitness coach India, functional fitness, body recomposition, TNA ShredX';
     }
 
-    // --- Title ---
     $title = esc_attr( wp_get_document_title() );
 
-    // --- URL ---
     $url = esc_url( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
 
-    // --- OG Image ---
     $og_image = '';
     if ( is_singular() && has_post_thumbnail() ) {
         $og_image = esc_url( get_the_post_thumbnail_url( $post->ID, 'large' ) );
@@ -131,10 +112,8 @@ function tna_gym_seo_tags() {
         $og_image = esc_url( get_template_directory_uri() . '/images/earth_network.png' );
     }
 
-    // --- OG Type ---
     $og_type = is_singular() ? 'article' : 'website';
 
-    // Core meta
     echo '<meta name="description" content="' . $description . '" />' . "\n";
     if ( $keywords ) {
         echo '<meta name="keywords" content="' . esc_attr( $keywords ) . '" />' . "\n";
@@ -143,13 +122,11 @@ function tna_gym_seo_tags() {
     echo '<meta name="author" content="Maheshwaran ChandraMohan" />' . "\n";
     echo '<link rel="canonical" href="' . $url . '" />' . "\n";
 
-    // Geo tags (Bangalore, Karnataka)
     echo '<meta name="geo.region" content="IN-KA" />' . "\n";
     echo '<meta name="geo.placename" content="Bangalore, Karnataka, India" />' . "\n";
     echo '<meta name="geo.position" content="12.9716;77.5946" />' . "\n";
     echo '<meta name="ICBM" content="12.9716, 77.5946" />' . "\n";
 
-    // Open Graph
     echo '<meta property="og:type" content="' . esc_attr( $og_type ) . '" />' . "\n";
     echo '<meta property="og:title" content="' . $title . '" />' . "\n";
     echo '<meta property="og:description" content="' . $description . '" />' . "\n";
@@ -162,7 +139,6 @@ function tna_gym_seo_tags() {
         echo '<meta property="og:image:height" content="630" />' . "\n";
     }
 
-    // Twitter Card
     echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
     echo '<meta name="twitter:site" content="@tna_shredx" />' . "\n";
     echo '<meta name="twitter:creator" content="@tna_shredx" />' . "\n";

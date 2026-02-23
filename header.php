@@ -3,7 +3,6 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Google Fonts: preconnect for faster loading -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap">
@@ -38,7 +37,6 @@
 
 
 
-			<!-- Mobile Hamburger Toggle -->
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
                 <span></span><span></span><span></span>
             </button>
@@ -69,7 +67,6 @@
 			</nav>
 		</div>
 
-        <!-- Limited Spots badge hangs from the sticky nav bar -->
         <div class="limited-badge">
             <div class="badge-string"></div>
             <div class="badge-ribbon">
