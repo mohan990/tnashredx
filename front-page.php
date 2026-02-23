@@ -437,15 +437,15 @@ get_header();
                         <p style="color: var(--text-muted); text-align:center; font-size:1.05rem; line-height:1.8;">Join the elite network of performance-focused athletes worldwide. Our remote engineering protocols eliminate physical boundaries, providing you with high-threshold programming and constant bio-feedback loops.</p>
                         <div style="display:flex; flex-direction:column; gap:16px; width:100%; max-width:380px; margin-top: 10px;">
                             <div style="display:flex; align-items:center; gap:16px; color:var(--text-muted); padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/chat_sync.png" alt="Sync" style="width: 32px; height: 32px; object-fit: contain;"> 
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/chat_sync.png" alt="Direct Bio-Sync via WhatsApp icon" style="width: 32px; height: 32px; object-fit: contain;"> 
                                 <span style="font-weight: 500;">Direct Bio-Sync via WhatsApp</span>
                             </div>
                             <div style="display:flex; align-items:center; gap:16px; color:var(--text-muted); padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/analytics_chart.png" alt="Analytics" style="width: 32px; height: 32px; object-fit: contain;"> 
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/analytics_chart.png" alt="Weekly metabolic and progress analytics icon" style="width: 32px; height: 32px; object-fit: contain;"> 
                                 <span style="font-weight: 500;">Weekly Metabolic &amp; Progress Audits</span>
                             </div>
                             <div style="display:flex; align-items:center; gap:16px; color:var(--text-muted); padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/digital_protocol.png" alt="Protocol" style="width: 32px; height: 32px; object-fit: contain;"> 
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/digital_protocol.png" alt="Customized digital training protocol icon" style="width: 32px; height: 32px; object-fit: contain;"> 
                                 <span style="font-weight: 500;">Customized Digital Protocols</span>
                             </div>
                         </div>
@@ -456,6 +456,70 @@ get_header();
         </section>
 
 	</main><!-- #main -->
+
+<!-- Structured Data: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "TNA - The Notorious Alpha",
+  "url": "<?php echo esc_url( home_url( '/' ) ); ?>",
+  "logo": "<?php echo esc_url( get_template_directory_uri() ); ?>/images/earth_network.png",
+  "description": "Elite online fitness coaching. Metabolic reset, body recomposition, and performance engineering — 100% remote, worldwide.",
+  "telephone": "+917349517372",
+  "email": "<?php echo esc_attr( get_option( 'admin_email' ) ); ?>",
+  "sameAs": [
+    "https://www.instagram.com/tna_shredx/"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "openingHours": "Mo-Su 00:00-23:59"
+}
+</script>
+
+<!-- Structured Data: FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long before I see results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Visible changes usually happen in 3–4 weeks with strict adherence to the system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need gym access?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ShredX and 1-on-1 Elite recommend gym access. Nomad X and TNA's Tribe are 100% gym-free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the diet very strict?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is highly structured, not blindly restrictive. We optimize for digestion and performance over starvation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you focus on gut health?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Digestion drives metabolism. Gut health is a core pillar of our metabolic reset."
+      }
+    }
+  ]
+}
+</script>
 
 <?php
 get_footer();

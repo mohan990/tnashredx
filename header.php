@@ -3,7 +3,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<!-- Google Fonts: preconnect for faster loading -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap">
 	<?php wp_head(); ?>
 </head>
 
@@ -51,17 +54,18 @@
                     'fallback_cb'    => false,
 				) );
 				?>
-                <!-- Fallback menu if user hasn't created one yet -->
-                <?php if ( ! has_nav_menu( 'primary' ) ) : ?>
+                <?php if ( ! has_nav_menu( 'primary' ) ) :
+                    $home = is_front_page() ? '' : esc_url( home_url( '/' ) );
+                ?>
                     <ul>
                         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/#about-us' ) ); ?>">About</a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/#programs' ) ); ?>">Programs</a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/#events' ) ); ?>">Events</a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/#results' ) ); ?>">Results</a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/#faq' ) ); ?>">FAQ</a></li>
+                        <li><a href="<?php echo $home; ?>#about-us">About</a></li>
+                        <li><a href="<?php echo $home; ?>#programs">Programs</a></li>
+                        <li><a href="<?php echo $home; ?>#events">Events</a></li>
+                        <li><a href="<?php echo $home; ?>#results">Results</a></li>
+                        <li><a href="<?php echo $home; ?>#faq">FAQ</a></li>
                         <li class="nav-cta-item">
-                            <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="nav-cta">Apply Now</a>
+                            <a href="<?php echo $home; ?>#contact" class="nav-cta">Apply Now</a>
                         </li>
                     </ul>
                 <?php endif; ?>

@@ -45,7 +45,7 @@ get_header();
                 
                 <!-- Contact Form & Info -->
                 <div class="contact-info content-box">
-                    <h3>Get In Touch</h3>
+                    <h2>Get In Touch</h2>
                     <p style="margin-bottom: 20px; color: #ccc;">Fill out the form below to book a class or ask a question.</p>
                     
                     <?php echo $form_status; ?>
@@ -83,7 +83,7 @@ get_header();
                     </form>
 
                     <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-                        <h3>Gym Details</h3>
+                        <h2>Gym Details</h2>
                         <p><strong>Email:</strong> info@shinygym.local</p>
                         <p><strong>Phone:</strong> (555) 123-4567</p>
                     </div>

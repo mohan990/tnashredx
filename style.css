@@ -6,7 +6,7 @@ Description: A bold, high-contrast, CrossFit-style WordPress theme for "Shiny Gy
 Version: 1.0
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');
+/* Fonts loaded via <link> in header.php for faster rendering */
 
 /* Core CSS Reset and Variables */
 :root {
@@ -1576,15 +1576,19 @@ a:not(.site-branding a):not(.btn):hover {
 /* Mobile Phones (Max 768px) */
 @media (max-width: 768px) {
 
-  /* Header & Navigation Stack */
+  /* Header: logo left, hamburger right — always a row */
   .header-container {
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 0 16px;
   }
 
   .site-branding h1 {
-    font-size: 1.8rem;
-    text-align: center;
+    font-size: 1.3rem;
+    text-align: left;
+    white-space: nowrap;
   }
 
   .main-navigation ul {
@@ -1830,9 +1834,30 @@ a:not(.site-branding a):not(.btn):hover {
 }
 
 @media (max-width: 768px) {
+  /* Header: always row — logo left, hamburger right */
   .header-container {
-    flex-direction: column;
-    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+
+  /* Always show the site branding/logo */
+  .site-branding h1 {
+    display: block !important;
+    opacity: 1 !important;
+    position: static !important;
+    transform: none !important;
+    font-size: 1.3rem;
+    white-space: nowrap;
+  }
+
+  .site-header {
+    min-height: 60px;
+    display: flex;
+    align-items: center;
   }
 
   .announcement-bar {
@@ -1840,13 +1865,6 @@ a:not(.site-branding a):not(.btn):hover {
     font-size: 0.8rem;
     flex-direction: column;
     text-align: center;
-  }
-
-  .announcement-bar p {
-    display: block;
-    max-width: 95%;
-    margin: 0 auto;
-    font-size: 0.75rem;
   }
 
   .announcement-bar p {
@@ -1884,7 +1902,7 @@ a:not(.site-branding a):not(.btn):hover {
   }
 
   .main-navigation a {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     padding: 10px 0;
     display: block;
   }
@@ -1900,7 +1918,7 @@ a:not(.site-branding a):not(.btn):hover {
     display: inline-block !important;
     width: auto !important;
     padding: 10px 20px !important;
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
     text-align: center !important;
     min-width: 140px;
   }
@@ -1914,51 +1932,9 @@ a:not(.site-branding a):not(.btn):hover {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    /* Add gap to prevent overlap */
     width: 100%;
     max-width: 320px;
     margin: 0 auto;
-  }
-
-  /* Hide branding heading on mobile/tablet by default */
-  .site-branding h1 {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  /* Show branding only when nav is open */
-  .nav-open .site-branding h1 {
-    display: block;
-    opacity: 1;
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1001;
-    /* Above nav but inside header visible area */
-  }
-
-  .site-header.nav-open .header-container {
-    justify-content: space-between;
-  }
-
-  .site-header {
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-  }
-
-  .header-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    /* Push hamburger to right when title is hidden */
-    transition: all 0.3s ease;
-  }
-
-  .nav-open .header-container {
-    justify-content: space-between;
   }
 
   /* Sections */
@@ -1984,7 +1960,7 @@ a:not(.site-branding a):not(.btn):hover {
 
 @media (max-width: 480px) {
   .site-branding h1 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 
   .announcement-bar {
@@ -2015,5 +1991,123 @@ a:not(.site-branding a):not(.btn):hover {
 
   .stat-number {
     font-size: 2.2rem;
+  }
+}
+
+/* =========================================================
+   DEVICE-SPECIFIC FONT OPTIMISATIONS
+   iPhone 14 Pro / 13 / 12  (≤ 430px, 390px viewport)
+   ========================================================= */
+@media (max-width: 430px) {
+  .site-branding h1 {
+    font-size: 1.1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+  }
+
+  .hero-buttons .btn {
+    font-size: 0.88rem;
+    padding: 10px 22px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .feature-card h3,
+  .program-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature-card p,
+  .program-card p {
+    font-size: 0.88rem;
+  }
+
+  .stat-number {
+    font-size: 1.9rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .content-box h3 {
+    font-size: 1.05rem;
+  }
+
+  .section-padding {
+    padding: 36px 0;
+  }
+}
+
+/* iPhone SE / small Android (≤ 375px) */
+@media (max-width: 375px) {
+  .site-branding h1 {
+    font-size: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+  }
+
+  .hero-buttons {
+    max-width: 260px;
+  }
+}
+
+/* iPad / Tablet portrait (769px – 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .site-branding h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 2.3rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .main-navigation a {
+    font-size: 1rem;
+  }
+
+  .main-navigation ul {
+    gap: 20px;
   }
 }

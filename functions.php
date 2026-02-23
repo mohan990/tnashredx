@@ -82,18 +82,62 @@ function tna_gym_custom_post_type() {
 add_action( 'init', 'tna_gym_custom_post_type', 0 );
 
 /**
- * Basic dynamic SEO Tags
+ * Comprehensive SEO Tags: meta description, Open Graph, Twitter Card, canonical
  */
 function tna_gym_seo_tags() {
     global $post;
-    if ( is_singular() ) {
-        // Description
-        $excerpt = wp_trim_words( $post->post_content, 20, '...' );
-        if ( !empty( $excerpt ) ) {
-            echo '<meta name="description" content="' . esc_attr( strip_tags( $excerpt ) ) . '" />' . "\n";
+
+    // --- Description ---
+    if ( is_singular() && ! empty( $post ) ) {
+        if ( has_excerpt( $post->ID ) ) {
+            $description = wp_strip_all_tags( get_the_excerpt( $post->ID ) );
+        } else {
+            $description = wp_trim_words( wp_strip_all_tags( $post->post_content ), 30, '...' );
         }
+    } elseif ( is_front_page() ) {
+        $description = 'TNA - The Notorious Alpha: Elite online fitness coaching. Metabolic reset, body recomposition, and performance engineering — 100% remote, worldwide.';
     } else {
-        echo '<meta name="description" content="' . esc_attr( get_bloginfo( 'description' ) ) . '" />' . "\n";
+        $description = get_bloginfo( 'description' );
+    }
+    $description = esc_attr( $description );
+
+    // --- Title ---
+    $title = esc_attr( wp_get_document_title() );
+
+    // --- URL ---
+    $url = esc_url( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+
+    // --- OG Image ---
+    $og_image = '';
+    if ( is_singular() && has_post_thumbnail() ) {
+        $og_image = esc_url( get_the_post_thumbnail_url( $post->ID, 'large' ) );
+    } else {
+        // Fallback: use the hero video thumbnail or a default image if you add one
+        $og_image = esc_url( get_template_directory_uri() . '/images/earth_network.png' );
+    }
+
+    // --- OG Type ---
+    $og_type = is_singular() ? 'article' : 'website';
+
+    echo '<meta name="description" content="' . $description . '" />' . "\n";
+    echo '<link rel="canonical" href="' . $url . '" />' . "\n";
+
+    // Open Graph
+    echo '<meta property="og:type" content="' . esc_attr( $og_type ) . '" />' . "\n";
+    echo '<meta property="og:title" content="' . $title . '" />' . "\n";
+    echo '<meta property="og:description" content="' . $description . '" />' . "\n";
+    echo '<meta property="og:url" content="' . $url . '" />' . "\n";
+    echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '" />' . "\n";
+    if ( $og_image ) {
+        echo '<meta property="og:image" content="' . $og_image . '" />' . "\n";
+    }
+
+    // Twitter Card
+    echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+    echo '<meta name="twitter:title" content="' . $title . '" />' . "\n";
+    echo '<meta name="twitter:description" content="' . $description . '" />' . "\n";
+    if ( $og_image ) {
+        echo '<meta name="twitter:image" content="' . $og_image . '" />' . "\n";
     }
 }
 add_action( 'wp_head', 'tna_gym_seo_tags', 1 );
