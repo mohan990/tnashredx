@@ -34,7 +34,10 @@
                     <?php the_custom_logo(); ?>
                 <?php else: ?>
                     <h1>
-                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">TNA - The Notorious Alpha</a>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                            <span class="brand-acronym">TNA</span>
+                            <span class="brand-tagline">The Notorious Alpha</span>
+                        </a>
                     </h1>
                 <?php endif; ?>
 			</div>

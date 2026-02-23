@@ -24,7 +24,10 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-brand">TNA - The Notorious Alpha</p>
+                <p class="footer-brand">
+                    <span class="brand-acronym">TNA</span>
+                    <span class="brand-tagline">The Notorious Alpha</span>
+                </p>
                 <p class="footer-tagline">Transformation Becomes Lifestyle.</p>
                 <p class="footer-copy">&copy; <?php echo date('Y'); ?> TNA. All Rights Reserved.</p>
             </div>
