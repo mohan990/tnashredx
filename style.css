@@ -1,8 +1,8 @@
 ﻿/*
-Theme Name: Shiny Gym
+Theme Name: TNA ShredX
 Theme URI: 
 Author: Antigravity
-Description: A bold, high-contrast, CrossFit-style WordPress theme for "Shiny Gym".
+Description: A bold, high-contrast, CrossFit-style WordPress theme for "TNA ShredX".
 Version: 1.0
 */
 
@@ -445,7 +445,7 @@ a:not(.site-branding a):not(.btn):hover {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(186, 104, 200, 0.08);
 }
 
-.gym-form {
+.tna-form {
   display: flex;
   flex-direction: column;
   gap: 12px;

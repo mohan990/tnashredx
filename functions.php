@@ -1,7 +1,7 @@
 <?php
 
-if ( ! function_exists( 'tna_gym_setup' ) ) :
-	function tna_gym_setup() {
+if ( ! function_exists( 'tna_shredx_setup' ) ) :
+	function tna_shredx_setup() {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
@@ -12,51 +12,51 @@ if ( ! function_exists( 'tna_gym_setup' ) ) :
 		) );
 		
 		register_nav_menus( array(
-			'primary' => esc_html__( 'Primary Menu', 'shiny-gym' ),
+			'primary' => esc_html__( 'Primary Menu', 'tna-shredx' ),
 		) );
 	}
 endif;
-add_action( 'after_setup_theme', 'tna_gym_setup' );
+add_action( 'after_setup_theme', 'tna_shredx_setup' );
 
-function tna_gym_scripts() {
+function tna_shredx_scripts() {
     $theme_version = filemtime( get_stylesheet_directory() . '/style.css' );
-	wp_enqueue_style( 'shiny-gym-style', get_stylesheet_uri(), array(), $theme_version );
+	wp_enqueue_style( 'tna-shredx-style', get_stylesheet_uri(), array(), $theme_version );
 }
-add_action( 'wp_enqueue_scripts', 'tna_gym_scripts' );
+add_action( 'wp_enqueue_scripts', 'tna_shredx_scripts' );
 
-function tna_gym_custom_post_type() {
+function tna_shredx_custom_post_type() {
 	$labels = array(
-		'name'                  => _x( 'Training Sessions', 'Post Type General Name', 'shiny-gym' ),
-		'singular_name'         => _x( 'Training Session', 'Post Type Singular Name', 'shiny-gym' ),
-		'menu_name'             => __( 'Training Sessions', 'shiny-gym' ),
-		'name_admin_bar'        => __( 'Training Session', 'shiny-gym' ),
-		'archives'              => __( 'Session Archives', 'shiny-gym' ),
-		'attributes'            => __( 'Session Attributes', 'shiny-gym' ),
-		'parent_item_colon'     => __( 'Parent Session:', 'shiny-gym' ),
-		'all_items'             => __( 'All Sessions', 'shiny-gym' ),
-		'add_new_item'          => __( 'Add New Training Session', 'shiny-gym' ),
-		'add_new'               => __( 'Add New', 'shiny-gym' ),
-		'new_item'              => __( 'New Session', 'shiny-gym' ),
-		'edit_item'             => __( 'Edit Session', 'shiny-gym' ),
-		'update_item'           => __( 'Update Session', 'shiny-gym' ),
-		'view_item'             => __( 'View Session', 'shiny-gym' ),
-		'view_items'            => __( 'View Sessions', 'shiny-gym' ),
-		'search_items'          => __( 'Search Session', 'shiny-gym' ),
-		'not_found'             => __( 'Not found', 'shiny-gym' ),
-		'not_found_in_trash'    => __( 'Not found in Trash', 'shiny-gym' ),
-		'featured_image'        => __( 'Featured Image', 'shiny-gym' ),
-		'set_featured_image'    => __( 'Set featured image', 'shiny-gym' ),
-		'remove_featured_image' => __( 'Remove featured image', 'shiny-gym' ),
-		'use_featured_image'    => __( 'Use as featured image', 'shiny-gym' ),
-		'insert_into_item'      => __( 'Insert into session', 'shiny-gym' ),
-		'uploaded_to_this_item' => __( 'Uploaded to this session', 'shiny-gym' ),
-		'items_list'            => __( 'Sessions list', 'shiny-gym' ),
-		'items_list_navigation' => __( 'Sessions list navigation', 'shiny-gym' ),
-		'filter_items_list'     => __( 'Filter sessions list', 'shiny-gym' ),
+		'name'                  => _x( 'Training Sessions', 'Post Type General Name', 'tna-shredx' ),
+		'singular_name'         => _x( 'Training Session', 'Post Type Singular Name', 'tna-shredx' ),
+		'menu_name'             => __( 'Training Sessions', 'tna-shredx' ),
+		'name_admin_bar'        => __( 'Training Session', 'tna-shredx' ),
+		'archives'              => __( 'Session Archives', 'tna-shredx' ),
+		'attributes'            => __( 'Session Attributes', 'tna-shredx' ),
+		'parent_item_colon'     => __( 'Parent Session:', 'tna-shredx' ),
+		'all_items'             => __( 'All Sessions', 'tna-shredx' ),
+		'add_new_item'          => __( 'Add New Training Session', 'tna-shredx' ),
+		'add_new'               => __( 'Add New', 'tna-shredx' ),
+		'new_item'              => __( 'New Session', 'tna-shredx' ),
+		'edit_item'             => __( 'Edit Session', 'tna-shredx' ),
+		'update_item'           => __( 'Update Session', 'tna-shredx' ),
+		'view_item'             => __( 'View Session', 'tna-shredx' ),
+		'view_items'            => __( 'View Sessions', 'tna-shredx' ),
+		'search_items'          => __( 'Search Session', 'tna-shredx' ),
+		'not_found'             => __( 'Not found', 'tna-shredx' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'tna-shredx' ),
+		'featured_image'        => __( 'Featured Image', 'tna-shredx' ),
+		'set_featured_image'    => __( 'Set featured image', 'tna-shredx' ),
+		'remove_featured_image' => __( 'Remove featured image', 'tna-shredx' ),
+		'use_featured_image'    => __( 'Use as featured image', 'tna-shredx' ),
+		'insert_into_item'      => __( 'Insert into session', 'tna-shredx' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this session', 'tna-shredx' ),
+		'items_list'            => __( 'Sessions list', 'tna-shredx' ),
+		'items_list_navigation' => __( 'Sessions list navigation', 'tna-shredx' ),
+		'filter_items_list'     => __( 'Filter sessions list', 'tna-shredx' ),
 	);
 	$args = array(
-		'label'                 => __( 'Training Session', 'shiny-gym' ),
-		'description'           => __( 'Gym classes and training sessions', 'shiny-gym' ),
+		'label'                 => __( 'Training Session', 'tna-shredx' ),
+		'description'           => __( 'Elite training and conditioning protocols', 'tna-shredx' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 		'hierarchical'          => false,
@@ -75,9 +75,9 @@ function tna_gym_custom_post_type() {
 	);
 	register_post_type( 'training_session', $args );
 }
-add_action( 'init', 'tna_gym_custom_post_type', 0 );
+add_action( 'init', 'tna_shredx_custom_post_type', 0 );
 
-function tna_gym_seo_tags() {
+function tna_shredx_seo_tags() {
     global $post;
 
     if ( is_singular() && ! empty( $post ) ) {
@@ -148,4 +148,4 @@ function tna_gym_seo_tags() {
         echo '<meta name="twitter:image" content="' . $og_image . '" />' . "\n";
     }
 }
-add_action( 'wp_head', 'tna_gym_seo_tags', 1 );
+add_action( 'wp_head', 'tna_shredx_seo_tags', 1 );

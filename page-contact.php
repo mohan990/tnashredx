@@ -1,7 +1,7 @@
 <?php
 
 $form_status = '';
-if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_gym_form']) ) {
+if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_tna_form']) ) {
     if ( ! isset( $_POST['tna_contact_nonce'] ) || ! wp_verify_nonce( $_POST['tna_contact_nonce'], 'tna_contact_form' ) ) {
         $form_status = '<p style="color: var(--primary-color); background: rgba(204, 41, 54, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✘ Security check failed. Please refresh the page and try again.</p>';
     } else {
@@ -11,7 +11,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_gym_form']) )
     $message = sanitize_textarea_field( $_POST['message'] );
 
     $to = get_option( 'admin_email' );
-    $subject = 'New Gym Inquiry from ' . $name;
+    $subject = 'New TNA ShredX Inquiry from ' . $name;
     $body = "Name: $name\nEmail: $email\nInterested In: $session\n\nMessage:\n$message";
     $headers = array('Reply-To: ' . $email);
 
@@ -43,7 +43,7 @@ get_header();
                     
                     <?php echo $form_status; ?>
 
-                    <form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="POST" class="gym-form">
+                    <form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="POST" class="tna-form">
                         <?php wp_nonce_field( 'tna_contact_form', 'tna_contact_nonce' ); ?>
                         <div class="form-group">
                             <label for="name">Your Name</label>
@@ -72,12 +72,12 @@ get_header();
                             <label for="message">Message</label>
                             <textarea id="message" name="message" rows="4" required placeholder="Tell us about your fitness goals..."></textarea>
                         </div>
-                        <button type="submit" name="submit_gym_form" class="btn" style="width: 100%;">Send Message</button>
+                        <button type="submit" name="submit_tna_form" class="btn" style="width: 100%;">Send Message</button>
                     </form>
 
                     <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-                        <h2>Gym Details</h2>
-                        <p><strong>Email:</strong> info@shinygym.local</p>
+                        <h2>Contact Details</h2>
+                        <p><strong>Email:</strong> info@tnashredx.com</p>
                         <p><strong>Phone:</strong> (555) 123-4567</p>
                     </div>
                 </div>
