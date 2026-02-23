@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+
+<div id="page" class="site">
+
+    <div class="announcement-bar">
+        <p>🔥 <strong>Now Enrolling for March 2026</strong>
+            <a href="#contact" class="announcement-link">Reserve Your Spot →</a>
+        </p>
+        <div class="limited-badge">
+            <div class="badge-ribbon">
+                <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 1L9 9H1l7 5-3 8 7-5 7 5-3-8 7-5h-8z"/></svg>
+                <span class="badge-text">Limited<br>Spots!</span>
+            </div>
+        </div>
+    </div>
+
+	<header id="masthead" class="site-header" style="position:relative;">
+		<div class="container header-container">
+			<div class="site-branding">
+                <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
+                    <?php the_custom_logo(); ?>
+                <?php else: ?>
+                    <h1>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">TNA - The Notorious Alpha</a>
+                    </h1>
+                <?php endif; ?>
+			</div>
+
+
+
+			<!-- Mobile Hamburger Toggle -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
+                <span></span><span></span><span></span>
+            </button>
+
+			<nav id="site-navigation" class="main-navigation">
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'primary',
+					'menu_id'        => 'primary-menu',
+                    'fallback_cb'    => false,
+				) );
+				?>
+                <!-- Fallback menu if user hasn't created one yet -->
+                <?php if ( ! has_nav_menu( 'primary' ) ) : ?>
+                    <ul>
+                        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/#about-us' ) ); ?>">About</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/#programs' ) ); ?>">Programs</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/#events' ) ); ?>">Events</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/#results' ) ); ?>">Results</a></li>
+                        <li><a href="<?php echo esc_url( home_url( '/#faq' ) ); ?>">FAQ</a></li>
+                        <li class="nav-cta-item">
+                            <a href="<?php echo esc_url( home_url( '/#contact' ) ); ?>" class="nav-cta">Apply Now</a>
+                        </li>
+                    </ul>
+                <?php endif; ?>
+			</nav>
+		</div>
+	</header>
