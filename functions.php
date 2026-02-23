@@ -8,6 +8,12 @@ if ( ! function_exists( 'tna_gym_setup' ) ) :
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'custom-logo', array(
+			'height'      => 80,
+			'width'       => 200,
+			'flex-height' => true,
+			'flex-width'  => true,
+		) );
 		
 		register_nav_menus( array(
 			'primary' => esc_html__( 'Primary Menu', 'shiny-gym' ),
@@ -82,7 +88,8 @@ function tna_gym_custom_post_type() {
 add_action( 'init', 'tna_gym_custom_post_type', 0 );
 
 /**
- * Comprehensive SEO Tags: meta description, Open Graph, Twitter Card, canonical
+ * Comprehensive SEO Tags: meta description, keywords, robots, author,
+ * geo tags, Open Graph, Twitter Card, canonical
  */
 function tna_gym_seo_tags() {
     global $post;
@@ -95,11 +102,20 @@ function tna_gym_seo_tags() {
             $description = wp_trim_words( wp_strip_all_tags( $post->post_content ), 30, '...' );
         }
     } elseif ( is_front_page() ) {
-        $description = 'TNA - The Notorious Alpha: Elite online fitness coaching. Metabolic reset, body recomposition, and performance engineering — 100% remote, worldwide.';
+        $description = 'TNA - The Notorious Alpha | CrossFit & functional fitness online coach in Bangalore, India. Expert body recomposition, metabolic reset & remote performance coaching by Maheshwaran ChandraMohan — serving clients worldwide.';
     } else {
         $description = get_bloginfo( 'description' );
     }
     $description = esc_attr( $description );
+
+    // --- Keywords (front page gets specific local + service keywords) ---
+    if ( is_front_page() ) {
+        $keywords = 'CrossFit coaching Bangalore, online CrossFit coach India, functional fitness training Bangalore, online personal trainer Bangalore, body recomposition coach India, remote fitness coaching India, fat loss coach Bangalore, metabolic reset program, online fitness transformation India, elite performance coaching, ShredX program, TNA fitness coach, online strength training India, functional fitness coach Bangalore';
+    } elseif ( is_singular() && ! empty( $post ) ) {
+        $keywords = wp_strip_all_tags( get_the_tags( $post->ID ) ? implode( ', ', wp_list_pluck( get_the_tags( $post->ID ), 'name' ) ) : '' );
+    } else {
+        $keywords = 'CrossFit Bangalore, online fitness coach India, functional fitness, body recomposition, TNA ShredX';
+    }
 
     // --- Title ---
     $title = esc_attr( wp_get_document_title() );
@@ -112,15 +128,26 @@ function tna_gym_seo_tags() {
     if ( is_singular() && has_post_thumbnail() ) {
         $og_image = esc_url( get_the_post_thumbnail_url( $post->ID, 'large' ) );
     } else {
-        // Fallback: use the hero video thumbnail or a default image if you add one
         $og_image = esc_url( get_template_directory_uri() . '/images/earth_network.png' );
     }
 
     // --- OG Type ---
     $og_type = is_singular() ? 'article' : 'website';
 
+    // Core meta
     echo '<meta name="description" content="' . $description . '" />' . "\n";
+    if ( $keywords ) {
+        echo '<meta name="keywords" content="' . esc_attr( $keywords ) . '" />' . "\n";
+    }
+    echo '<meta name="robots" content="index, follow" />' . "\n";
+    echo '<meta name="author" content="Maheshwaran ChandraMohan" />' . "\n";
     echo '<link rel="canonical" href="' . $url . '" />' . "\n";
+
+    // Geo tags (Bangalore, Karnataka)
+    echo '<meta name="geo.region" content="IN-KA" />' . "\n";
+    echo '<meta name="geo.placename" content="Bangalore, Karnataka, India" />' . "\n";
+    echo '<meta name="geo.position" content="12.9716;77.5946" />' . "\n";
+    echo '<meta name="ICBM" content="12.9716, 77.5946" />' . "\n";
 
     // Open Graph
     echo '<meta property="og:type" content="' . esc_attr( $og_type ) . '" />' . "\n";
@@ -128,12 +155,17 @@ function tna_gym_seo_tags() {
     echo '<meta property="og:description" content="' . $description . '" />' . "\n";
     echo '<meta property="og:url" content="' . $url . '" />' . "\n";
     echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '" />' . "\n";
+    echo '<meta property="og:locale" content="en_IN" />' . "\n";
     if ( $og_image ) {
         echo '<meta property="og:image" content="' . $og_image . '" />' . "\n";
+        echo '<meta property="og:image:width" content="1200" />' . "\n";
+        echo '<meta property="og:image:height" content="630" />' . "\n";
     }
 
     // Twitter Card
     echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+    echo '<meta name="twitter:site" content="@tna_shredx" />' . "\n";
+    echo '<meta name="twitter:creator" content="@tna_shredx" />' . "\n";
     echo '<meta name="twitter:title" content="' . $title . '" />' . "\n";
     echo '<meta name="twitter:description" content="' . $description . '" />' . "\n";
     if ( $og_image ) {
