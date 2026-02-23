@@ -31,7 +31,14 @@ body {
   padding: 0;
   box-sizing: border-box;
   width: 100%;
-  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden; /* prevent horizontal scroll at document level */
+}
+
+body {
+  overflow-x: clip; /* clip (not hidden) so position:sticky still works */
 }
 
 body {
@@ -174,9 +181,9 @@ a:not(.site-branding a):not(.btn):hover {
 .main-navigation a {
   color: var(--text-muted);
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-decoration: none;
   position: relative;
   padding: 8px 0;
@@ -277,6 +284,17 @@ a:not(.site-branding a):not(.btn):hover {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
   animation: fadeUp 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+/* Gradient-clip text is invisible against video — use solid accent + glow instead */
+.hero-content h1 .gradient-text {
+  background: none;
+  -webkit-text-fill-color: var(--primary-color);
+  color: var(--primary-color);
+  text-shadow:
+    0 0 20px rgba(100, 181, 246, 0.7),
+    0 0 40px rgba(186, 104, 200, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 .hero-content p {
@@ -1098,9 +1116,18 @@ a:not(.site-branding a):not(.btn):hover {
 /* --- Breakpoint: tablet & mobile (â‰¤1024px) --- */
 @media (max-width: 1024px) {
 
-  /* Hide limited badge on tablet/mobile */
+  /* Smaller badge on tablet/mobile — shorter string, compact ribbon */
   .limited-badge {
-    display: none !important;
+    right: 10px;
+  }
+
+  .badge-string {
+    height: 60px;
+  }
+
+  .badge-ribbon {
+    font-size: 0.55rem;
+    padding: 4px 7px 8px;
   }
 
   /* Show hamburger button */
@@ -1480,6 +1507,22 @@ a:not(.site-branding a):not(.btn):hover {
   flex-wrap: wrap;
 }
 
+@media (max-width: 600px) {
+  .stats-row {
+    gap: 14px;
+    flex-wrap: nowrap;
+  }
+
+  .stat-number {
+    font-size: 1.7rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+}
+
 .stat-item {
   display: flex;
   flex-direction: column;
@@ -1515,7 +1558,7 @@ a:not(.site-branding a):not(.btn):hover {
   gap: 60px;
   padding-bottom: 50px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  text-align: left;
+  text-align: center;
 }
 
 .footer-col-title {
@@ -1574,11 +1617,13 @@ a:not(.site-branding a):not(.btn):hover {
   font-size: 0.9rem;
   margin-bottom: 12px;
   font-style: italic;
+  text-align: center;
 }
 
 .footer-copy {
   color: rgba(255, 255, 255, 0.3);
   font-size: 0.8rem;
+  text-align: center;
 }
 
 /* ================= RESPONSIVE DESIGN ================= */
