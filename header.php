@@ -19,15 +19,9 @@
         <p>🔥 <strong>Now Enrolling for March 2026</strong>
             <a href="#contact" class="announcement-link">Reserve Your Spot →</a>
         </p>
-        <div class="limited-badge">
-            <div class="badge-ribbon">
-                <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 1L9 9H1l7 5-3 8 7-5 7 5-3-8 7-5h-8z"/></svg>
-                <span class="badge-text">Limited<br>Spots!</span>
-            </div>
-        </div>
     </div>
 
-	<header id="masthead" class="site-header" style="position:relative;">
+	<header id="masthead" class="site-header">
 		<div class="container header-container">
 			<div class="site-branding">
                 <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
@@ -74,4 +68,13 @@
                 <?php endif; ?>
 			</nav>
 		</div>
+
+        <!-- Limited Spots badge hangs from the sticky nav bar -->
+        <div class="limited-badge">
+            <div class="badge-string"></div>
+            <div class="badge-ribbon">
+                <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 1L9 9H1l7 5-3 8 7-5 7 5-3-8 7-5h-8z"/></svg>
+                <span class="badge-text">Limited<br>Spots!</span>
+            </div>
+        </div>
 	</header>
