@@ -18,6 +18,18 @@ if ( ! function_exists( 'tna_shredx_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'tna_shredx_setup' );
 
+// Optimised front-page <title> — targets "Gym in Bangalore", "Personal Training", etc.
+function tna_shredx_document_title( $title ) {
+	if ( is_front_page() ) {
+		$title['title']   = 'TNAShredX | Gym in Bangalore | Personal Training & Fitness Center';
+		unset( $title['tagline'] );
+		unset( $title['site'] );
+	}
+	return $title;
+}
+add_filter( 'document_title_parts', 'tna_shredx_document_title' );
+add_filter( 'document_title_separator', function() { return '|'; } );
+
 function tna_shredx_scripts() {
     $theme_version = filemtime( get_stylesheet_directory() . '/style.css' );
 	wp_enqueue_style( 'tna-shredx-style', get_stylesheet_uri(), array(), $theme_version );
@@ -87,14 +99,14 @@ function tna_shredx_seo_tags() {
             $description = wp_trim_words( wp_strip_all_tags( $post->post_content ), 30, '...' );
         }
     } elseif ( is_front_page() ) {
-        $description = 'TNA - The Notorious Alpha | CrossFit & functional fitness online coach in Bangalore, India. Expert body recomposition, metabolic reset & remote performance coaching by Maheshwaran ChandraMohan — serving clients worldwide.';
+        $description = 'TNAShredX — Top Gym & Fitness Center in Bangalore. Expert Personal Training, Strength & Conditioning, CrossFit, and body recomposition programs. Online coaching worldwide by Maheshwaran ChandraMohan.';
     } else {
         $description = get_bloginfo( 'description' );
     }
     $description = esc_attr( $description );
 
     if ( is_front_page() ) {
-        $keywords = 'CrossFit coaching Bangalore, online CrossFit coach India, functional fitness training Bangalore, online personal trainer Bangalore, body recomposition coach India, remote fitness coaching India, fat loss coach Bangalore, metabolic reset program, online fitness transformation India, elite performance coaching, ShredX program, TNA fitness coach, online strength training India, functional fitness coach Bangalore';
+        $keywords = 'Gym in Bangalore, Fitness Center Bangalore, Personal Training Bangalore, Strength and Conditioning Bangalore, CrossFit coaching Bangalore, online personal trainer Bangalore, body recomposition coach India, fat loss coach Bangalore, metabolic reset program, remote fitness coaching India, functional fitness Bangalore, TNAShredX, ShredX program, online strength training India';
     } elseif ( is_singular() && ! empty( $post ) ) {
         $keywords = wp_strip_all_tags( get_the_tags( $post->ID ) ? implode( ', ', wp_list_pluck( get_the_tags( $post->ID ), 'name' ) ) : '' );
     } else {
@@ -103,13 +115,19 @@ function tna_shredx_seo_tags() {
 
     $title = esc_attr( wp_get_document_title() );
 
-    $url = esc_url( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+    if ( is_front_page() ) {
+        $url = esc_url( home_url( '/' ) );
+    } elseif ( is_singular() ) {
+        $url = esc_url( get_permalink() );
+    } else {
+        $url = esc_url( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . strtok( $_SERVER['REQUEST_URI'], '?' ) );
+    }
 
     $og_image = '';
     if ( is_singular() && has_post_thumbnail() ) {
         $og_image = esc_url( get_the_post_thumbnail_url( $post->ID, 'large' ) );
     } else {
-        $og_image = esc_url( get_template_directory_uri() . '/images/earth_network.png' );
+        $og_image = esc_url( home_url( '/og.jpg' ) );
     }
 
     $og_type = is_singular() ? 'article' : 'website';
@@ -149,3 +167,12 @@ function tna_shredx_seo_tags() {
     }
 }
 add_action( 'wp_head', 'tna_shredx_seo_tags', 1 );
+
+// Append sitemap URL to WordPress virtual robots.txt
+function tna_shredx_robots_txt( $output, $public ) {
+	if ( $public ) {
+		$output .= "\nSitemap: " . esc_url( home_url( '/sitemap.xml' ) ) . "\n";
+	}
+	return $output;
+}
+add_filter( 'robots_txt', 'tna_shredx_robots_txt', 10, 2 );

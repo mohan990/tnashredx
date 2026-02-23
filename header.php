@@ -26,12 +26,20 @@
                 <?php if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) : ?>
                     <?php the_custom_logo(); ?>
                 <?php else: ?>
-                    <h1>
+                    <?php if ( is_front_page() ) : ?>
+                    <p class="site-branding-title">
+                    <?php else : ?>
+                    <h1 class="site-branding-title">
+                    <?php endif; ?>
                         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
                             <span class="brand-acronym">TNA</span>
                             <span class="brand-tagline">The Notorious Alpha</span>
                         </a>
+                    <?php if ( is_front_page() ) : ?>
+                    </p>
+                    <?php else : ?>
                     </h1>
+                    <?php endif; ?>
                 <?php endif; ?>
 			</div>
 

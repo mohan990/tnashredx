@@ -1,0 +1,22 @@
+# robots.txt for tnashredx.com
+# Place this file at the WordPress root (public_html / document root), not inside the theme folder.
+
+User-agent: *
+Allow: /
+
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /wp-includes/
+Disallow: /xmlrpc.php
+Disallow: /wp-json/
+Disallow: /?s=
+Disallow: /search/
+
+# Allow WordPress login page for admins only via allow-list — block scanners
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+Sitemap: https://tnashredx.com/sitemap.xml
