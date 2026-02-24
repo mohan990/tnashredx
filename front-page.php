@@ -12,7 +12,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_tna_form']) )
     $goal    = sanitize_text_field( $_POST['goal'] );
     $message = sanitize_textarea_field( $_POST['message'] );
 
-    $to = get_option( 'admin_email' );
+    $to = 'magi.lawa@gmail.com';
     $subject = 'TNA Application: ' . $program . ' - ' . $name;
     $body = "Name: $name\nEmail: $email\nPhone: $phone\nProgram: $program\nGoal: $goal\n\nMessage:\n$message";
     $headers = array('Reply-To: ' . $email);
@@ -32,7 +32,7 @@ get_header();
 
         <section class="hero-section hero-large">
             <video class="hero-video" autoplay muted loop playsinline>
-                <source src="https://tnashredx.com/wp-content/uploads/2026/02/IMG_6396.mp4" type="video/mp4">
+                <source src="https://tnashredx.com/wp-content/uploads/2026/02/landing_video.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
             <div class="hero-content">

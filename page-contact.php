@@ -10,7 +10,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_tna_form']) )
     $session = sanitize_text_field( $_POST['session'] );
     $message = sanitize_textarea_field( $_POST['message'] );
 
-    $to = get_option( 'admin_email' );
+    $to = 'magi.lawa@gmail.com';
     $subject = 'New TNA ShredX Inquiry from ' . $name;
     $body = "Name: $name\nEmail: $email\nInterested In: $session\n\nMessage:\n$message";
     $headers = array('Reply-To: ' . $email);
