@@ -5,20 +5,35 @@
 
 $form_status = '';
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_gym_form']) ) {
-    $name    = sanitize_text_field( $_POST['name'] );
-    $email   = sanitize_email( $_POST['email'] );
-    $session = sanitize_text_field( $_POST['session'] );
-    $message = sanitize_textarea_field( $_POST['message'] );
+    $nonce_valid  = isset( $_POST['tna_contact_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['tna_contact_nonce'] ) ), 'tna_contact_form' );
+    $is_bot       = ! empty( $_POST['tna_website'] );
+    $ip           = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'unknown';
+    $throttle_key = 'tna_contact_' . md5( $ip );
 
-    $to = get_option( 'admin_email' ); 
-    $subject = 'New Gym Inquiry from ' . $name;
-    $body = "Name: $name\nEmail: $email\nInterested In: $session\n\nMessage:\n$message";
-    $headers = array('Reply-To: ' . $email);
-
-    if ( wp_mail( $to, $subject, $body, $headers ) ) {
+    if ( $is_bot ) {
         $form_status = '<p style="color: #25d366; background: rgba(37, 211, 102, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✔ Thank you for contacting us. We\'ll get back to you soon.</p>';
+    } elseif ( ! $nonce_valid ) {
+        $form_status = '<p style="color: var(--primary-color); background: rgba(204, 41, 54, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✘ Security check failed. Please refresh the page and try again.</p>';
+    } elseif ( get_transient( $throttle_key ) ) {
+        $form_status = '<p style="color: var(--primary-color); background: rgba(204, 41, 54, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✘ Please wait a minute before submitting again.</p>';
     } else {
-        $form_status = '<p style="color: var(--primary-color); background: rgba(204, 41, 54, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✘ Failed to send message. Please try again later.</p>';
+        set_transient( $throttle_key, 1, MINUTE_IN_SECONDS );
+
+        $name    = sanitize_text_field( $_POST['name'] );
+        $email   = sanitize_email( $_POST['email'] );
+        $session = sanitize_text_field( $_POST['session'] );
+        $message = sanitize_textarea_field( $_POST['message'] );
+
+        $to = get_option( 'admin_email' );
+        $subject = 'New Gym Inquiry from ' . $name;
+        $body = "Name: $name\nEmail: $email\nInterested In: $session\n\nMessage:\n$message";
+        $headers = array('Reply-To: ' . $email);
+
+        if ( wp_mail( $to, $subject, $body, $headers ) ) {
+            $form_status = '<p style="color: #25d366; background: rgba(37, 211, 102, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✔ Thank you for contacting us. We\'ll get back to you soon.</p>';
+        } else {
+            $form_status = '<p style="color: var(--primary-color); background: rgba(204, 41, 54, 0.1); padding: 10px; border-radius: 5px; font-weight: bold; margin-bottom: 20px;">✘ Failed to send message. Please try again later.</p>';
+        }
     }
 }
 
@@ -43,6 +58,11 @@ get_header();
                     <?php echo $form_status; ?>
 
                     <form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="POST" class="gym-form">
+                        <?php wp_nonce_field( 'tna_contact_form', 'tna_contact_nonce' ); ?>
+                        <div class="form-group" style="position:absolute; left:-9999px; top:auto; overflow:hidden;" aria-hidden="true">
+                            <label for="tna_website">Website</label>
+                            <input type="text" id="tna_website" name="tna_website" tabindex="-1" autocomplete="off">
+                        </div>
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required placeholder="John Doe">
