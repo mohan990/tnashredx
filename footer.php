@@ -22,7 +22,10 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-brand">TNA - The Notorious Alpha</p>
+                <p class="footer-brand">
+                    <span class="brand-acronym">TNA</span>
+                    <span class="brand-tagline">The Notorious Alpha</span>
+                </p>
                 <p class="footer-tagline">Transformation Becomes Lifestyle.</p>
                 <p class="footer-copy">&copy; <?php echo date('Y'); ?> TNA. All Rights Reserved.</p>
             </div>
@@ -88,7 +91,7 @@
             item.style.opacity = '0';
             item.style.animation = `fadeUp 0.6s cubic-bezier(0.1, 0.8, 0.2, 1) forwards ${index * 0.1 + 0.3}s`;
         });
-
+        
         const brand = document.querySelector('.site-branding');
         if (brand) {
             brand.style.opacity = '0';
@@ -102,7 +105,7 @@
         if (track && prevBtn && nextBtn) {
             const scrollAmount = () => {
                 const card = track.querySelector('.yt-card');
-                return card ? card.offsetWidth + 24 : 380;
+                return card ? card.offsetWidth + 24 : 380; 
             };
 
             nextBtn.addEventListener('click', () => {
