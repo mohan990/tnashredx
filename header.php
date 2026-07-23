@@ -7,7 +7,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap">
 	<?php if ( ! has_site_icon() ) : ?>
+	<link rel="icon" type="image/svg+xml" href="<?php echo esc_url( get_theme_file_uri( 'images/favicon.svg' ) ); ?>">
 	<link rel="shortcut icon" href="<?php echo esc_url( home_url( '/favicon.ico' ) ); ?>" type="image/x-icon">
+	<link rel="apple-touch-icon" href="<?php echo esc_url( get_theme_file_uri( 'images/favicon.svg' ) ); ?>">
 	<?php endif; ?>
 	<?php wp_head(); ?>
 </head>
@@ -18,7 +20,7 @@
 <div id="page" class="site">
 
     <div class="announcement-bar">
-        <p>🔥 <strong>Now Enrolling for March 2026</strong>
+        <p>🔥 <strong>Now Enrolling for <?php echo esc_html( date_i18n( 'F Y', strtotime( 'first day of next month' ) ) ); ?></strong>
             <a href="#contact" class="announcement-link">Reserve Your Spot →</a>
         </p>
     </div>

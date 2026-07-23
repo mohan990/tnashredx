@@ -18,12 +18,17 @@ if ( ! function_exists( 'tna_shredx_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'tna_shredx_setup' );
 
-// Optimised front-page <title> — targets "Gym in Bangalore", "Personal Training", etc.
+// Optimised <title>: brand-led on the front page for keywords, and the TNAShredX
+// brand appended to every other page's own title so the tab reads consistently.
 function tna_shredx_document_title( $title ) {
 	if ( is_front_page() ) {
 		$title['title']   = 'TNAShredX | Gym in Bangalore | Personal Training';
 		unset( $title['tagline'] );
 		unset( $title['site'] );
+	} else {
+		// Keep the page's own title (good for SEO), but force the site name to the brand.
+		$title['site'] = 'TNAShredX';
+		unset( $title['tagline'] );
 	}
 	return $title;
 }

@@ -149,6 +149,54 @@
             instaTrack.addEventListener('scroll', updateInstaBtns, { passive: true });
             updateInstaBtns();
         }
+
+        // ---- Multi-step contact wizard ----
+        // Progressive enhancement: without this JS the form shows all fields at once
+        // and still submits normally. Here we split it into steps with validation.
+        const wizard = document.querySelector('[data-wizard]');
+        if (wizard) {
+            const steps = Array.from(wizard.querySelectorAll('.wizard-step'));
+            const fill = wizard.querySelector('.wizard-progress-fill');
+            const labels = Array.from(wizard.querySelectorAll('.wizard-step-label'));
+            let current = 0;
+
+            wizard.classList.add('wizard-active');
+
+            const show = (index) => {
+                steps.forEach((step, i) => step.classList.toggle('is-active', i === index));
+                labels.forEach((label, i) => label.classList.toggle('is-active', i <= index));
+                if (fill) fill.style.width = ((index) / (steps.length - 1) * 100) + '%';
+                current = index;
+                const firstField = steps[index].querySelector('input, textarea, select');
+                if (firstField) firstField.focus({ preventScroll: true });
+            };
+
+            // Validate only the fields inside the current step before advancing.
+            const validateStep = (index) => {
+                const fields = steps[index].querySelectorAll('input, textarea, select');
+                for (const field of fields) {
+                    if (!field.checkValidity()) {
+                        field.reportValidity();
+                        return false;
+                    }
+                }
+                return true;
+            };
+
+            wizard.querySelectorAll('[data-wizard-next]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    if (validateStep(current) && current < steps.length - 1) show(current + 1);
+                });
+            });
+
+            wizard.querySelectorAll('[data-wizard-prev]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    if (current > 0) show(current - 1);
+                });
+            });
+
+            show(0);
+        }
     });
 </script>
 
