@@ -124,14 +124,16 @@
             updateBtns();
         }
 
-        const instaTrack = document.getElementById('insta-track');
+        // Instagram feed: scroll the Smash Balloon plugin's image row with prev/next
+        // arrows (LOAD MORE button is hidden via CSS), mirroring the YouTube carousel.
+        const instaTrack = document.querySelector('.insta-plugin-container #sbi_images');
         const instaPrevBtn = document.getElementById('insta-prev');
         const instaNextBtn = document.getElementById('insta-next');
 
         if (instaTrack && instaPrevBtn && instaNextBtn) {
             const scrollAmount = () => {
-                const card = instaTrack.querySelector('.insta-card');
-                return card ? card.offsetWidth + 20 : 300; 
+                const card = instaTrack.querySelector('.sbi_item');
+                return card ? card.offsetWidth + 20 : 300;
             };
 
             instaNextBtn.addEventListener('click', () => {
