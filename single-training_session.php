@@ -1,7 +1,4 @@
 <?php
-/**
- * Single template for Training Sessions
- */
 
 get_header();
 ?>
