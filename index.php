@@ -1,8 +1,4 @@
 <?php
-/**
- * The main template file (fallback)
- */
-
 get_header();
 ?>
 

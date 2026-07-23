@@ -1,8 +1,4 @@
 <?php
-/**
- * Theme functions and definitions
- */
-
 if ( ! function_exists( 'tna_gym_setup' ) ) :
 	function tna_gym_setup() {
 		add_theme_support( 'automatic-feed-links' );
@@ -16,18 +12,12 @@ if ( ! function_exists( 'tna_gym_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'tna_gym_setup' );
 
-/**
- * Enqueue scripts and styles.
- */
 function tna_gym_scripts() {
     $theme_version = filemtime( get_stylesheet_directory() . '/style.css' );
 	wp_enqueue_style( 'shiny-gym-style', get_stylesheet_uri(), array(), $theme_version );
 }
 add_action( 'wp_enqueue_scripts', 'tna_gym_scripts' );
 
-/**
- * Register Custom Post Type for Training Sessions
- */
 function tna_gym_custom_post_type() {
 	$labels = array(
 		'name'                  => _x( 'Training Sessions', 'Post Type General Name', 'shiny-gym' ),
@@ -68,7 +58,7 @@ function tna_gym_custom_post_type() {
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'menu_position'         => 5,
-		'menu_icon'             => 'dashicons-universal-access', // Adds a cool icon in admin menu
+		'menu_icon'             => 'dashicons-universal-access',
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -81,13 +71,9 @@ function tna_gym_custom_post_type() {
 }
 add_action( 'init', 'tna_gym_custom_post_type', 0 );
 
-/**
- * Basic dynamic SEO Tags
- */
 function tna_gym_seo_tags() {
     global $post;
     if ( is_singular() ) {
-        // Description
         $excerpt = wp_trim_words( $post->post_content, 20, '...' );
         if ( !empty( $excerpt ) ) {
             echo '<meta name="description" content="' . esc_attr( strip_tags( $excerpt ) ) . '" />' . "\n";

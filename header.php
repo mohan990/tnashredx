@@ -38,7 +38,6 @@
 
 
 
-			<!-- Mobile Hamburger Toggle -->
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">
                 <span></span><span></span><span></span>
             </button>
@@ -51,7 +50,6 @@
                     'fallback_cb'    => false,
 				) );
 				?>
-                <!-- Fallback menu if user hasn't created one yet -->
                 <?php if ( ! has_nav_menu( 'primary' ) ) : ?>
                     <ul>
                         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>

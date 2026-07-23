@@ -1,8 +1,4 @@
 <?php
-/**
- * Archive template for Training Sessions
- */
-
 get_header();
 ?>
 
