@@ -173,9 +173,26 @@ get_header();
                 <h2 class="section-title">Instagram <span class="gradient-text">Feed</span></h2>
                 <p class="section-subtitle">Catch our daily training tips, transformation stories, and arena highlights on Instagram.</p>
 
-                <?php if ( shortcode_exists( 'instagram-feed' ) ) : ?>
+                <?php
+                /**
+                 * Render the feed, then decide. Checking shortcode_exists() alone was
+                 * unreliable: Smash Balloon registers its shortcode during init and the
+                 * guard could report false while the plugin was active, pinning the page
+                 * to the "install the plugin" state. Run the shortcode and fall back only
+                 * if it produced nothing.
+                 */
+                $tna_insta = '';
+                if ( shortcode_exists( 'instagram-feed' ) ) {
+                    $tna_insta = trim( do_shortcode( '[instagram-feed feed=1]' ) );
+                } elseif ( defined( 'SBIVER' ) || class_exists( 'SB_Instagram_Feed' ) ) {
+                    // Plugin is present but the shortcode was not registered on this
+                    // request — ask it to render anyway.
+                    $tna_insta = trim( do_shortcode( '[instagram-feed]' ) );
+                }
+                ?>
+                <?php if ( $tna_insta !== '' ) : ?>
                     <div class="insta-plugin-container">
-                        <?php echo do_shortcode( '[instagram-feed feed=1]' ); ?>
+                        <?php echo $tna_insta; ?>
                     </div>
                 <?php else : ?>
                     <div class="insta-pending">
@@ -190,7 +207,7 @@ get_header();
                 <?php endif; ?>
 
                 <div class="yt-controls insta-controls">
-                    <?php if ( shortcode_exists( 'instagram-feed' ) ) : ?>
+                    <?php if ( $tna_insta !== '' ) : ?>
                         <button class="yt-arrow" id="insta-prev" aria-label="Previous posts">&larr;</button>
                         <button class="yt-arrow" id="insta-next" aria-label="Next posts">&rarr;</button>
                     <?php endif; ?>
