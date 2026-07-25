@@ -276,11 +276,11 @@ get_header();
                     <div class="community-text" style="order: 2;">
                         <p class="section-eyebrow">The Brainchild</p>
                         <h2 class="section-title">Meet The <span class="gradient-text">Architect</span></h2>
-                        <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 20px;">Maheshwaran ChandraMohan – Founder & Head Coach</h3>
-                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                        <h3 class="community-role">Maheshwaran ChandraMohan – Founder &amp; Head Coach</h3>
+                        <p class="community-copy">
                             Behind the TNA system is a relentless pursuit of peak human performance. Maheshwaran built The Notorious Alpha not as a traditional gym, but as a high-end remote engineering protocol designed to hack biology, optimize metabolic pathways, and build unbreakable mindsets.
                         </p>
-                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">
+                        <p class="community-copy community-copy--last">
                             With years of experience transforming elite athletes and high-performers, the philosophy is simple: cut the noise, focus on precise data-driven programming, and scale true structural transformation globally.
                         </p>
                         <div class="architect-cta" style="display: flex; gap: 20px; align-items: center; margin-top: 20px; flex-wrap: wrap;">
@@ -294,11 +294,13 @@ get_header();
                                     </svg>
                                 </a>
 
+                                <?php /* Facebook hidden until a real page URL is available (was href="#").
                                 <a href="#" aria-label="Facebook" class="social-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
                                         <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
                                     </svg>
                                 </a>
+                                */ ?>
 
                                 <a href="https://www.youtube.com/@Thenotoriousalpha" target="_blank" rel="noopener" aria-label="YouTube" class="social-icon social-icon--youtube">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
@@ -320,8 +322,8 @@ get_header();
                     <div class="community-text">
                         <p class="section-eyebrow">Who We Are</p>
                         <h2 class="section-title">Online <span class="gradient-text">Excellence</span></h2>
-                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">TNA is a purely online-based elite coaching platform. We utilize advanced remote engineering protocols to deliver world-class structural body transformations regardless of your geographical coordinates.</p>
-                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px;">Our remote coaching infrastructure leverages data-driven programming across metabolic control and athletic performance. This is technical transformation, simplified for global access.</p>
+                        <p class="community-copy">TNA is a purely online-based elite coaching platform. We utilize advanced remote engineering protocols to deliver world-class structural body transformations regardless of your geographical coordinates.</p>
+                        <p class="community-copy community-copy--last">Our remote coaching infrastructure leverages data-driven programming across metabolic control and athletic performance. This is technical transformation, simplified for global access.</p>
                         <div class="stats-row">
                             <div class="stat-item">
                                 <span class="stat-number gradient-text">150+</span>
@@ -337,7 +339,7 @@ get_header();
                             </div>
                         </div>
                     </div>
-                    <div class="community-image">
+                    <div class="community-image community-image--wide">
                         <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?q=80&w=1469&auto=format&fit=crop" alt="TNAShredX online fitness coaching team — strength and conditioning training in Bangalore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px; box-shadow: 0 16px 48px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);">
                     </div>
                 </div>
