@@ -59,17 +59,17 @@ get_header();
                 <p class="section-subtitle">Most programs focus only on calories. We focus on training stimulus, gut-friendly nutrition, metabolic control, and habit engineering.</p>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon">🧬</div>
+                        <div class="feature-icon"><span class="feature-icon-inner">🧬</span></div>
                         <h3>Metabolic Reset</h3>
                         <p>We fix digestion, optimize protein intake, and manage stress to create an efficient fat-burning engine.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">⛓️</div>
+                        <div class="feature-icon"><span class="feature-icon-inner">⛓️</span></div>
                         <h3>Habit Engineering</h3>
                         <p>Identity creates consistency. Consistency creates results. We build systems that make discipline automatic.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🌍</div>
+                        <div class="feature-icon"><span class="feature-icon-inner">🌍</span></div>
                         <h3>Remote Engineering</h3>
                         <p>True performance is location-independent. Our online systems ensure elite-level training stimulus from anywhere in the world.</p>
                     </div>
@@ -86,7 +86,7 @@ get_header();
                 <div class="program-cards">
                     <div class="program-card program-card--featured">
                         <div class="program-card-badge">Most Popular</div>
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp" alt="ShredX body recomposition program icon" width="64" height="64" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp" alt="ShredX body recomposition program icon" width="320" height="180" loading="lazy"></div>
                         <h3>ShredX</h3>
                         <p class="program-card-tagline">Body Recomposition Engine</p>
                         <p class="program-card-desc">A high-density fat loss protocol. We optimize macro-nutrient thresholds to shift your metabolic baseline while installing rigid discipline systems.</p>
@@ -99,7 +99,7 @@ get_header();
                     </div>
 
                     <div class="program-card">
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/nomadX.webp" alt="Nomad X travel performance program icon" width="64" height="64" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/nomadX.webp" alt="Nomad X travel performance program icon" width="320" height="180" loading="lazy"></div>
                         <h3>Nomad X</h3>
                         <p class="program-card-tagline">Distributed Performance Protocol</p>
                         <p class="program-card-desc">Location-independent performance engineering for high-frequency travelers. Remote strength maintenance and anti-bloat travel nutrition systems.</p>
@@ -112,7 +112,7 @@ get_header();
                     </div>
 
                     <div class="program-card">
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/TNATribe.webp" alt="TNA's Tribe group coaching program icon" width="64" height="64" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/TNATribe.webp" alt="TNA's Tribe group coaching program icon" width="320" height="180" loading="lazy"></div>
                         <h3>TNA's Tribe</h3>
                         <p class="program-card-tagline">Synchronized Accountability Ecosystem</p>
                         <p class="program-card-desc">A high-performance online network providing structure, peer-to-peer competitive benchmarks, and technical mindset engineering.</p>
@@ -126,7 +126,7 @@ get_header();
 
                     <div class="program-card program-card--elite">
                         <div class="program-card-badge program-card-badge--elite">Application Only</div>
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/Tna1-1.webp" alt="1-on-1 Elite personal coaching program" width="64" height="64" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/Tna1-1.webp" alt="1-on-1 Elite personal coaching program" width="320" height="180" loading="lazy"></div>
                         <h3>1-on-1 Elite</h3>
                         <p class="program-card-tagline">High-Threshold Biological Engineering</p>
                         <p class="program-card-desc">Maximum-intervention remote coaching. Precision programming for athletes requiring absolute metabolic and physiological optimization.</p>
@@ -149,17 +149,17 @@ get_header();
                 
                 <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                     <div class="feature-card">
-                        <div class="feature-icon">🏃‍♂️</div>
+                        <div class="feature-icon"><span class="feature-icon-inner">🏃‍♂️</span></div>
                         <h3>Alpha Circuit</h3>
                         <p>High-intensity Obstacle Race pushing athletes to their cardiovascular and mental limits.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">🏋️‍♀️</div>
+                        <div class="feature-icon"><span class="feature-icon-inner">🏋️‍♀️</span></div>
                         <h3>2x CrossFit Competitions</h3>
                         <p>Head-to-head functional fitness battles testing strength, speed, and gymnastics.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon">💪</div>
+                        <div class="feature-icon"><span class="feature-icon-inner">💪</span></div>
                         <h3>2x Powerlifting Championships</h3>
                         <p>Raw strength showcases focusing on the big three: Squat, Bench, and Deadlift.</p>
                     </div>
@@ -598,15 +598,15 @@ get_header();
                         </div>
                         <ul class="online-features">
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/chat_sync.webp" alt="" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/chat_sync.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Direct Bio-Sync via WhatsApp</span>
                             </li>
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/analytics_chart.webp" alt="" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/analytics_chart.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Weekly Metabolic &amp; Progress Audits</span>
                             </li>
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/digital_protocol.webp" alt="" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/digital_protocol.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Customized Digital Protocols</span>
                             </li>
                         </ul>
@@ -618,15 +618,62 @@ get_header();
 
 	</main>
 
+<?php
+/**
+ * WebSite + Organization graph. Google reads `WebSite.name` for the site name
+ * shown above search results, and `Organization.logo` for the logo beside them.
+ * Neither can be derived from the LocalBusiness node alone, which is why search
+ * results were rendering as a bare URL.
+ */
+$tna_home = home_url( '/' );
+$tna_graph = array(
+	'@context' => 'https://schema.org',
+	'@graph'   => array(
+		array(
+			'@type'         => 'WebSite',
+			'@id'           => $tna_home . '#website',
+			'url'           => $tna_home,
+			'name'          => 'TNAShredX',
+			'alternateName' => array( 'TNA ShredX', 'TNA - The Notorious Alpha' ),
+			'inLanguage'    => 'en-IN',
+			'publisher'     => array( '@id' => $tna_home . '#organization' ),
+		),
+		array(
+			'@type'         => 'Organization',
+			'@id'           => $tna_home . '#organization',
+			'name'          => 'TNAShredX',
+			'alternateName' => 'TNA - The Notorious Alpha',
+			'url'           => $tna_home,
+			'logo'          => array(
+				'@type' => 'ImageObject',
+				'@id'   => $tna_home . '#logo',
+				'url'   => 'https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp',
+				'caption' => 'TNAShredX',
+			),
+			'image'    => array( '@id' => $tna_home . '#logo' ),
+			'sameAs'   => array(
+				'https://www.instagram.com/tna_shredx/',
+				'https://www.youtube.com/@Thenotoriousalpha',
+			),
+		),
+	),
+);
+echo '<script type="application/ld+json">'
+	. wp_json_encode( $tna_graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+	. '</script>' . "\n";
+?>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "SportsActivityLocation", "GymOrFitnessCenter"],
+  "@id": "<?php echo esc_url( home_url( '/' ) ); ?>#gym",
   "name": "TNA - The Notorious Alpha",
   "alternateName": "TNA ShredX",
+  "parentOrganization": { "@id": "<?php echo esc_url( home_url( '/' ) ); ?>#organization" },
   "url": "<?php echo esc_url( home_url( '/' ) ); ?>",
-  "logo": "https://tnashredx.com/wp-content/uploads/2026/02/earth_network.webp",
-  "image": "https://tnashredx.com/wp-content/uploads/2026/02/earth_network.webp",
+  "logo": "https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp",
+  "image": "https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp",
   "description": "Elite online CrossFit and functional fitness coaching based in Bangalore, India. Expert body recomposition, metabolic reset and remote performance engineering by Maheshwaran ChandraMohan — serving clients worldwide.",
   "telephone": "+917349517372",
   "email": "<?php echo esc_attr( get_option( 'admin_email' ) ); ?>",

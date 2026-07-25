@@ -140,11 +140,30 @@ function tna_shredx_seo_tags() {
         $url = esc_url( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . strtok( $_SERVER['REQUEST_URI'], '?' ) );
     }
 
-    $og_image = '';
+    // Resolve a share image and its real dimensions. Never hardcode 1200x630 —
+    // wrong dimensions make Facebook/X skip the image entirely.
+    $og_image  = '';
+    $og_width  = '';
+    $og_height = '';
+
     if ( is_singular() && has_post_thumbnail() ) {
-        $og_image = esc_url( get_the_post_thumbnail_url( $post->ID, 'large' ) );
-    } else {
-        $og_image = esc_url( home_url( '/og.jpg' ) );
+        $thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+        if ( $thumb ) {
+            $og_image  = esc_url( $thumb[0] );
+            $og_width  = (int) $thumb[1];
+            $og_height = (int) $thumb[2];
+        }
+    }
+
+    // Fall back to the WordPress Site Icon, then to the brand mark. The previous
+    // /og.jpg fallback pointed at a file that does not exist.
+    if ( ! $og_image && has_site_icon() ) {
+        $og_image  = esc_url( get_site_icon_url( 512 ) );
+        $og_width  = 512;
+        $og_height = 512;
+    }
+    if ( ! $og_image ) {
+        $og_image = 'https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp';
     }
 
     $og_type = is_singular() ? 'article' : 'website';
@@ -153,8 +172,15 @@ function tna_shredx_seo_tags() {
     if ( $keywords ) {
         echo '<meta name="keywords" content="' . esc_attr( $keywords ) . '" />' . "\n";
     }
-    echo '<meta name="robots" content="index, follow" />' . "\n";
+    // Thin/utility views must not be indexed (guide §10). Everything else gets
+    // the rich-preview directives Google honours for image-heavy pages.
+    if ( is_search() || is_404() ) {
+        echo '<meta name="robots" content="noindex, follow" />' . "\n";
+    } else {
+        echo '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />' . "\n";
+    }
     echo '<meta name="author" content="Maheshwaran ChandraMohan" />' . "\n";
+    echo '<meta name="theme-color" content="#0a0a1a" />' . "\n";
     echo '<link rel="canonical" href="' . $url . '" />' . "\n";
 
     echo '<meta name="geo.region" content="IN-KA" />' . "\n";
@@ -170,8 +196,10 @@ function tna_shredx_seo_tags() {
     echo '<meta property="og:locale" content="en_IN" />' . "\n";
     if ( $og_image ) {
         echo '<meta property="og:image" content="' . $og_image . '" />' . "\n";
-        echo '<meta property="og:image:width" content="1200" />' . "\n";
-        echo '<meta property="og:image:height" content="630" />' . "\n";
+        if ( $og_width && $og_height ) {
+            echo '<meta property="og:image:width" content="' . $og_width . '" />' . "\n";
+            echo '<meta property="og:image:height" content="' . $og_height . '" />' . "\n";
+        }
         echo '<meta property="og:image:alt" content="' . $title . '" />' . "\n";
     }
 
@@ -250,8 +278,69 @@ function tna_shredx_guard_submission() {
 // Append sitemap URL to WordPress virtual robots.txt
 function tna_shredx_robots_txt( $output, $public ) {
 	if ( $public ) {
-		$output .= "\nSitemap: " . esc_url( home_url( '/sitemap.xml' ) ) . "\n";
+		// Core serves its sitemap index at /wp-sitemap.xml — the previous
+		// /sitemap.xml only resolves if an SEO plugin creates it.
+		$sitemap = function_exists( 'get_sitemap_url' )
+			? get_sitemap_url( 'index' )
+			: home_url( '/wp-sitemap.xml' );
+		$output .= "\nSitemap: " . esc_url( $sitemap ) . "\n";
 	}
 	return $output;
 }
 add_filter( 'robots_txt', 'tna_shredx_robots_txt', 10, 2 );
+
+// BreadcrumbList JSON-LD on inner pages (guide §7). The front page is excluded —
+// a single-item breadcrumb carries no value and Google ignores it.
+function tna_shredx_breadcrumb_schema() {
+	if ( is_front_page() || is_404() || is_search() ) {
+		return;
+	}
+
+	$items = array(
+		array(
+			'@type'    => 'ListItem',
+			'position' => 1,
+			'name'     => 'Home',
+			'item'     => home_url( '/' ),
+		),
+	);
+
+	if ( is_singular() ) {
+		$items[] = array(
+			'@type'    => 'ListItem',
+			'position' => 2,
+			'name'     => wp_strip_all_tags( get_the_title() ),
+			'item'     => get_permalink(),
+		);
+	} elseif ( is_post_type_archive() ) {
+		$items[] = array(
+			'@type'    => 'ListItem',
+			'position' => 2,
+			'name'     => wp_strip_all_tags( post_type_archive_title( '', false ) ),
+			'item'     => get_post_type_archive_link( get_post_type() ),
+		);
+	} elseif ( is_category() || is_tag() || is_tax() ) {
+		$items[] = array(
+			'@type'    => 'ListItem',
+			'position' => 2,
+			'name'     => wp_strip_all_tags( single_term_title( '', false ) ),
+			'item'     => get_term_link( get_queried_object() ),
+		);
+	}
+
+	// Only Home resolved — nothing worth emitting.
+	if ( count( $items ) < 2 ) {
+		return;
+	}
+
+	$schema = array(
+		'@context'        => 'https://schema.org',
+		'@type'           => 'BreadcrumbList',
+		'itemListElement' => $items,
+	);
+
+	echo "\n" . '<script type="application/ld+json">'
+		. wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+		. '</script>' . "\n";
+}
+add_action( 'wp_head', 'tna_shredx_breadcrumb_schema', 2 );
