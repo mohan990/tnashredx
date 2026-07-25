@@ -167,29 +167,6 @@ get_header();
             </div>
         </section>
 
-        <section id="results" class="wod-section section-padding reveal">
-            <div class="container">
-                <p class="section-eyebrow">The Evidence</p>
-                <h2 class="section-title">Client <span class="gradient-text">Results</span></h2>
-                <p class="section-subtitle">Real feedback from athletes who committed to the TNA system.</p>
-                
-                <div class="testimonial-grid">
-                    <div class="content-box testimonial-card">
-                        <span class="testimonial-quote-mark">&ldquo;</span>
-                        <p class="testimonial-text">Lost 8kg in 45 days without starving.</p>
-                    </div>
-                    <div class="content-box testimonial-card">
-                        <span class="testimonial-quote-mark">&ldquo;</span>
-                        <p class="testimonial-text">My digestion improved and bloating reduced significantly.</p>
-                    </div>
-                    <div class="content-box testimonial-card">
-                        <span class="testimonial-quote-mark">&ldquo;</span>
-                        <p class="testimonial-text">First time I trained with proper structure. Built muscle while reducing fat.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="instagram-feed" class="instagram-section section-padding reveal">
             <div class="container">
                 <p class="section-eyebrow">On the Gram</p>
@@ -362,6 +339,29 @@ get_header();
                     </div>
                     <div class="community-image">
                         <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?q=80&w=1469&auto=format&fit=crop" alt="TNAShredX online fitness coaching team — strength and conditioning training in Bangalore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px; box-shadow: 0 16px 48px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="wod-section section-padding reveal">
+            <div class="container">
+                <p class="section-eyebrow">The Evidence</p>
+                <h2 class="section-title">Client <span class="gradient-text">Results</span></h2>
+                <p class="section-subtitle">Real feedback from athletes who committed to the TNA system.</p>
+
+                <div class="testimonial-grid">
+                    <div class="content-box testimonial-card">
+                        <span class="testimonial-quote-mark">&ldquo;</span>
+                        <p class="testimonial-text">Lost 8kg in 45 days without starving.</p>
+                    </div>
+                    <div class="content-box testimonial-card">
+                        <span class="testimonial-quote-mark">&ldquo;</span>
+                        <p class="testimonial-text">My digestion improved and bloating reduced significantly.</p>
+                    </div>
+                    <div class="content-box testimonial-card">
+                        <span class="testimonial-quote-mark">&ldquo;</span>
+                        <p class="testimonial-text">First time I trained with proper structure. Built muscle while reducing fat.</p>
                     </div>
                 </div>
             </div>

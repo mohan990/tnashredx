@@ -243,7 +243,7 @@ a:not(.site-branding a):not(.btn):hover {
   }
 
   /* Drop the looping glow and the entrance moves; keep everything visible. */
-  .hero-content h1 .gradient-text {
+  .glow-wrapper {
     animation: none;
   }
 
@@ -371,6 +371,47 @@ a:not(.site-branding a):not(.btn):hover {
   opacity: 0;
   animation: fadeUp 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
   animation-delay: 0.15s;
+}
+
+/* Gradient headline: horizontal sweep with a lifted purple end. The stock 135deg
+   accent runs diagonally, which on a wide single line wastes most of the sweep
+   vertically and lands the darkest stop on "ENGINEERING". */
+.hero-content h1 .gradient-text {
+  background: linear-gradient(90deg,
+      #7cc0ff 0%,
+      #9db4f5 45%,
+      #d69ae6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* The h1's dark drop shadow shows straight through transparent-filled text and
+     greys the gradient down — cancel it here and glow via the wrapper instead. */
+  text-shadow: none;
+}
+
+/* text-shadow cannot glow gradient-clipped text (the fill is transparent), but
+   filter: drop-shadow works off the rendered pixels, so it can. */
+.glow-wrapper {
+  display: inline-block;
+  filter:
+    drop-shadow(0 0 18px rgba(124, 192, 255, 0.45))
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75));
+  animation: hero-glow-pulse 4.5s ease-in-out 1.4s infinite;
+}
+
+@keyframes hero-glow-pulse {
+  0%,
+  100% {
+    filter:
+      drop-shadow(0 0 18px rgba(124, 192, 255, 0.45))
+      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 30px rgba(140, 200, 255, 0.7))
+      drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75));
+  }
 }
 
 .hero-content p {
