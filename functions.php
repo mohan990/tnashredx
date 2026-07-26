@@ -180,7 +180,7 @@ function tna_shredx_seo_tags() {
         $og_height = 512;
     }
     if ( ! $og_image ) {
-        $og_image = 'https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp';
+        $og_image = 'https://tnashredx.com/wp-content/uploads/2026/07/shredX.webp';
     }
 
     $og_type = is_singular() ? 'article' : 'website';

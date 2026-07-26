@@ -33,7 +33,7 @@ get_header();
 
         <section class="hero-section hero-large">
             <video class="hero-video" autoplay muted loop playsinline>
-                <source src="https://tnashredx.com/wp-content/uploads/2026/02/landing_video.mp4" type="video/mp4">
+                <source src="https://tnashredx.com/wp-content/uploads/2026/07/landing_video.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay"></div>
             <div class="hero-grain" aria-hidden="true"></div>
@@ -86,7 +86,7 @@ get_header();
                 <div class="program-cards">
                     <div class="program-card program-card--featured">
                         <div class="program-card-badge">Most Popular</div>
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp" alt="ShredX body recomposition program icon" width="320" height="180" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/07/shredX.webp" alt="ShredX body recomposition program icon" width="320" height="180" loading="lazy"></div>
                         <h3>ShredX</h3>
                         <p class="program-card-tagline">Body Recomposition Engine</p>
                         <p class="program-card-desc">A high-density fat loss protocol. We optimize macro-nutrient thresholds to shift your metabolic baseline while installing rigid discipline systems.</p>
@@ -99,7 +99,7 @@ get_header();
                     </div>
 
                     <div class="program-card">
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/nomadX.webp" alt="Nomad X travel performance program icon" width="320" height="180" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/07/nomadX.webp" alt="Nomad X travel performance program icon" width="320" height="180" loading="lazy"></div>
                         <h3>Nomad X</h3>
                         <p class="program-card-tagline">Distributed Performance Protocol</p>
                         <p class="program-card-desc">Location-independent performance engineering for high-frequency travelers. Remote strength maintenance and anti-bloat travel nutrition systems.</p>
@@ -112,7 +112,7 @@ get_header();
                     </div>
 
                     <div class="program-card">
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/TNATribe.webp" alt="TNA's Tribe group coaching program icon" width="320" height="180" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/07/TNATribe.webp" alt="TNA's Tribe group coaching program icon" width="320" height="180" loading="lazy"></div>
                         <h3>TNA's Tribe</h3>
                         <p class="program-card-tagline">Synchronized Accountability Ecosystem</p>
                         <p class="program-card-desc">A high-performance online network providing structure, peer-to-peer competitive benchmarks, and technical mindset engineering.</p>
@@ -126,7 +126,7 @@ get_header();
 
                     <div class="program-card program-card--elite">
                         <div class="program-card-badge program-card-badge--elite">Application Only</div>
-                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/Tna1-1.webp" alt="1-on-1 Elite personal coaching program" width="320" height="180" loading="lazy"></div>
+                        <div class="program-card-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/07/Tna1-1.webp" alt="1-on-1 Elite personal coaching program" width="320" height="180" loading="lazy"></div>
                         <h3>1-on-1 Elite</h3>
                         <p class="program-card-tagline">High-Threshold Biological Engineering</p>
                         <p class="program-card-desc">Maximum-intervention remote coaching. Precision programming for athletes requiring absolute metabolic and physiological optimization.</p>
@@ -288,7 +288,7 @@ get_header();
             <div class="container">
                 <div class="community-grid">
                     <div class="community-image" style="order: 1;">
-                        <img src="https://tnashredx.com/wp-content/uploads/2026/02/photo_2022-08-03_21-54-50.webp" alt="Maheshwaran ChandraMohan — Founder and Head Coach of TNAShredX gym Bangalore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px; box-shadow: 0 16px 48px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);">
+                        <img src="https://tnashredx.com/wp-content/uploads/2026/07/photo_2022-08-03_21-54-50.webp" alt="Maheshwaran ChandraMohan — Founder and Head Coach of TNAShredX gym Bangalore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px; box-shadow: 0 16px 48px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);">
                     </div>
                     <div class="community-text" style="order: 2;">
                         <p class="section-eyebrow">The Brainchild</p>
@@ -592,7 +592,7 @@ get_header();
 
                     <div class="content-box online-panel">
                         <div class="online-panel-header">
-                            <img class="online-panel-globe" src="https://tnashredx.com/wp-content/uploads/2026/02/earth_network.webp" alt="TNAShredX global online coaching network" width="120" height="120" loading="lazy">
+                            <img class="online-panel-globe" src="https://tnashredx.com/wp-content/uploads/2026/07/earth_network.webp" alt="TNAShredX global online coaching network" width="120" height="120" loading="lazy">
                             <h3 class="online-panel-title">100% Online. <span class="gradient-text">Worldwide.</span></h3>
                             <p class="online-panel-intro">Join the elite network of performance-focused athletes worldwide. Our remote engineering protocols eliminate physical boundaries, providing you with high-threshold programming and constant bio-feedback loops.</p>
                             
@@ -617,15 +617,15 @@ get_header();
                         </div>
                         <ul class="online-features">
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/chat_sync.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/07/chat_sync.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Direct Bio-Sync via WhatsApp</span>
                             </li>
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/analytics_chart.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/07/analytics_chart.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Weekly Metabolic &amp; Progress Audits</span>
                             </li>
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/digital_protocol.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/07/digital_protocol.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Customized Digital Protocols</span>
                             </li>
                         </ul>
@@ -666,7 +666,7 @@ $tna_graph = array(
 			'logo'          => array(
 				'@type' => 'ImageObject',
 				'@id'   => $tna_home . '#logo',
-				'url'   => 'https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp',
+				'url'   => 'https://tnashredx.com/wp-content/uploads/2026/07/shredX.webp',
 				'caption' => 'TNAShredX',
 			),
 			'image'    => array( '@id' => $tna_home . '#logo' ),
@@ -701,8 +701,8 @@ echo '<script type="application/ld+json">'
   ],
   "parentOrganization": { "@id": "<?php echo esc_url( home_url( '/' ) ); ?>#organization" },
   "url": "<?php echo esc_url( home_url( '/' ) ); ?>",
-  "logo": "https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp",
-  "image": "https://tnashredx.com/wp-content/uploads/2026/02/shredX.webp",
+  "logo": "https://tnashredx.com/wp-content/uploads/2026/07/shredX.webp",
+  "image": "https://tnashredx.com/wp-content/uploads/2026/07/shredX.webp",
   "description": "Elite online CrossFit and functional fitness coaching based in Bangalore, India. Expert body recomposition, metabolic reset and remote performance engineering by Maheshwaran ChandraMohan — serving clients worldwide.",
   "telephone": "+917349517372",
   "email": "<?php echo esc_attr( get_option( 'admin_email' ) ); ?>",
