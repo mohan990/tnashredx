@@ -617,15 +617,15 @@ get_header();
                         </div>
                         <ul class="online-features">
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/2/chat_sync.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/chat_sync.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Direct Bio-Sync via WhatsApp</span>
                             </li>
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/2/analytics_chart.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/analytics_chart.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Weekly Metabolic &amp; Progress Audits</span>
                             </li>
                             <li class="online-feature">
-                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/2/digital_protocol.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
+                                <span class="online-feature-icon"><img src="https://tnashredx.com/wp-content/uploads/2026/02/digital_protocol.webp" alt="" role="presentation" aria-hidden="true" width="32" height="32" loading="lazy"></span>
                                 <span>Customized Digital Protocols</span>
                             </li>
                         </ul>
