@@ -128,7 +128,8 @@ function tna_shredx_seo_tags() {
     if ( is_front_page() ) {
         // Brand, then programs, then events/credentials, then the generic
         // gym/online head terms and the Bangalore long tail.
-        $keywords = 'The Notorious Alpha, TNA The Notorious Alpha, Notorious Alpha gym, TNAShredX, TNA ShredX, Maheshwaran ChandraMohan, '
+        $keywords = 'TNA ShredX, TNAShredX, TNA ShredX gym, TNAShredX gym, TNA gym, TNA ShredX Bangalore, TNAShredX online gym, '
+            . 'ShredX gym, The Notorious Alpha, TNA The Notorious Alpha, Notorious Alpha gym, Maheshwaran ChandraMohan, '
             . 'ShredX, ShredX program, Nomad X, TNA Tribe, TNAs Tribe, 1-on-1 Elite Coaching, Direct Bio-Sync, Bio-Sync coaching, '
             . 'Alpha Circuit, Alpha Circuit obstacle race, CrossFit competitions Bangalore, Powerlifting championships Bangalore, '
             . 'online gym, 100% online gym, gym, virtual gym, online gym India, online personal training, online fitness coaching, '
@@ -148,7 +149,12 @@ function tna_shredx_seo_tags() {
     } elseif ( is_singular() ) {
         $url = esc_url( get_permalink() );
     } else {
-        $url = esc_url( ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . strtok( $_SERVER['REQUEST_URI'], '?' ) );
+        // Build from home_url(), never $_SERVER['HTTP_HOST']. Using the request
+        // host makes www. and non-www. each self-canonicalise, which splits the
+        // page into two competing URLs in Google's index (separate favicons,
+        // split link equity). home_url() always emits the one canonical host.
+        $path = strtok( $_SERVER['REQUEST_URI'], '?' );
+        $url  = esc_url( home_url( $path ) );
     }
 
     // Resolve a share image and its real dimensions. Never hardcode 1200x630 —
