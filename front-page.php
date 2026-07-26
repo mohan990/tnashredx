@@ -653,7 +653,7 @@ $tna_graph = array(
 			'@id'           => $tna_home . '#website',
 			'url'           => $tna_home,
 			'name'          => 'TNAShredX',
-			'alternateName' => array( 'TNA ShredX', 'TNA - The Notorious Alpha' ),
+			'alternateName' => array( 'TNA ShredX', 'The Notorious Alpha', 'TNA - The Notorious Alpha' ),
 			'inLanguage'    => 'en-IN',
 			'publisher'     => array( '@id' => $tna_home . '#organization' ),
 		),
@@ -661,7 +661,7 @@ $tna_graph = array(
 			'@type'         => 'Organization',
 			'@id'           => $tna_home . '#organization',
 			'name'          => 'TNAShredX',
-			'alternateName' => 'TNA - The Notorious Alpha',
+			'alternateName' => array( 'The Notorious Alpha', 'TNA - The Notorious Alpha', 'TNA ShredX' ),
 			'url'           => $tna_home,
 			'logo'          => array(
 				'@type' => 'ImageObject',
@@ -702,8 +702,25 @@ echo '<script type="application/ld+json">'
   "founder": {
     "@type": "Person",
     "name": "Maheshwaran ChandraMohan",
-    "jobTitle": "Head Coach & Founder",
-    "sameAs": "https://www.instagram.com/tna_shredx/"
+    "alternateName": "Maheshwaran Chandra Mohan",
+    "jobTitle": "Founder and Head Coach",
+    "worksFor": { "@id": "<?php echo esc_url( home_url( '/' ) ); ?>#organization" },
+    "knowsAbout": [
+      "Online Personal Training",
+      "CrossFit Coaching",
+      "Powerlifting",
+      "Body Recomposition",
+      "Metabolic Conditioning"
+    ],
+    "sameAs": [
+      "https://www.instagram.com/tna_shredx/",
+      "https://www.youtube.com/@Thenotoriousalpha"
+    ]
+  },
+  "employee": {
+    "@type": "Person",
+    "name": "Maheshwaran ChandraMohan",
+    "jobTitle": "Head Coach"
   },
   "address": {
     "@type": "PostalAddress",
@@ -721,22 +738,101 @@ echo '<script type="application/ld+json">'
     { "@type": "Country", "name": "India" },
     { "@type": "AdministrativeArea", "name": "Worldwide" }
   ],
+  "alternateName": [
+    "TNAShredX Online Gym",
+    "TNA Online Personal Training",
+    "The Notorious Alpha"
+  ],
   "knowsAbout": [
+    "Online Gym",
+    "100% Online Gym",
+    "Gym",
+    "Online Personal Training",
+    "Virtual Fitness Coaching",
+    "ShredX",
+    "Nomad X",
+    "TNA's Tribe",
+    "1-on-1 Elite Coaching",
+    "Direct Bio-Sync Coaching",
+    "Alpha Circuit Obstacle Race",
+    "CrossFit Competitions",
+    "Powerlifting Championships",
     "CrossFit",
     "Functional Fitness",
     "Body Recomposition",
     "Metabolic Reset",
-    "Online Personal Training",
     "Fat Loss Coaching",
     "Performance Engineering",
     "Gut Health Nutrition",
     "Remote Strength Training"
+  ],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ShredX" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Nomad X" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "TNA's Tribe" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "1-on-1 Elite Coaching" } }
   ],
   "openingHours": "Mo-Su 00:00-23:59",
   "sameAs": [
     "https://www.instagram.com/tna_shredx/",
     "https://www.youtube.com/@Thenotoriousalpha",
     "https://g.page/tnashredx"
+  ]
+}
+</script>
+
+<?php
+/**
+ * Events TNA has organised. No dates are asserted — these are past events and
+ * the real dates are not recorded anywhere in the theme, so claiming any would
+ * be invented. Google treats a dateless Event as non-eligible for event rich
+ * results, which is correct here: the value is entity association, not a
+ * listing. Named so a search for "Alpha Circuit" can resolve to TNA.
+ */
+?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Event",
+      "name": "Alpha Circuit",
+      "description": "High-intensity obstacle race pushing athletes to their cardiovascular and mental limits.",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "organizer": { "@id": "<?php echo esc_url( home_url( '/' ) ); ?>#organization" },
+      "location": {
+        "@type": "Place",
+        "name": "Bangalore, Karnataka, India",
+        "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" }
+      }
+    },
+    {
+      "@type": "Event",
+      "name": "TNA CrossFit Competition",
+      "description": "Head-to-head functional fitness competition testing strength, speed and gymnastics. Held twice.",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "organizer": { "@id": "<?php echo esc_url( home_url( '/' ) ); ?>#organization" },
+      "location": {
+        "@type": "Place",
+        "name": "Bangalore, Karnataka, India",
+        "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" }
+      }
+    },
+    {
+      "@type": "Event",
+      "name": "TNA Powerlifting Championship",
+      "description": "Raw strength showcase focused on squat, bench press and deadlift. Held twice.",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "organizer": { "@id": "<?php echo esc_url( home_url( '/' ) ); ?>#organization" },
+      "location": {
+        "@type": "Place",
+        "name": "Bangalore, Karnataka, India",
+        "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" }
+      }
+    }
   ]
 }
 </script>

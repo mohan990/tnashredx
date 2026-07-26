@@ -22,7 +22,10 @@ add_action( 'after_setup_theme', 'tna_shredx_setup' );
 // brand appended to every other page's own title so the tab reads consistently.
 function tna_shredx_document_title( $title ) {
 	if ( is_front_page() ) {
-		$title['title']   = 'TNAShredX | Gym in Bangalore | Personal Training';
+		// "Online" leads because the coaching is remote-first and that is the
+		// higher-intent query; Bangalore stays for local/Maps relevance. Kept
+		// under ~60 chars so Google does not truncate it in results.
+		$title['title']   = 'TNAShredX | Online Gym and Personal Training | Bangalore';
 		unset( $title['tagline'] );
 		unset( $title['site'] );
 	} else {
@@ -116,18 +119,26 @@ function tna_shredx_seo_tags() {
             $description = wp_trim_words( wp_strip_all_tags( $post->post_content ), 30, '...' );
         }
     } elseif ( is_front_page() ) {
-        $description = 'TNAShredX — Gym in Bangalore for personal training, CrossFit & body recomposition. Online fitness coaching worldwide.';
+        $description = 'TNAShredX by The Notorious Alpha — an online gym and personal training studio for fat loss, strength and body recomposition. Based in Bangalore, coaching clients worldwide.';
     } else {
         $description = get_bloginfo( 'description' );
     }
     $description = esc_attr( $description );
 
     if ( is_front_page() ) {
-        $keywords = 'Gym in Bangalore, Fitness Center Bangalore, Personal Training Bangalore, Strength and Conditioning Bangalore, CrossFit coaching Bangalore, online personal trainer Bangalore, body recomposition coach India, fat loss coach Bangalore, metabolic reset program, remote fitness coaching India, functional fitness Bangalore, TNAShredX, ShredX program, online strength training India';
+        // Brand, then programs, then events/credentials, then the generic
+        // gym/online head terms and the Bangalore long tail.
+        $keywords = 'The Notorious Alpha, TNA The Notorious Alpha, Notorious Alpha gym, TNAShredX, TNA ShredX, Maheshwaran ChandraMohan, '
+            . 'ShredX, ShredX program, Nomad X, TNA Tribe, TNAs Tribe, 1-on-1 Elite Coaching, Direct Bio-Sync, Bio-Sync coaching, '
+            . 'Alpha Circuit, Alpha Circuit obstacle race, CrossFit competitions Bangalore, Powerlifting championships Bangalore, '
+            . 'online gym, 100% online gym, gym, virtual gym, online gym India, online personal training, online fitness coaching, '
+            . 'Gym in Bangalore, Fitness Center Bangalore, Personal Training Bangalore, Strength and Conditioning Bangalore, '
+            . 'CrossFit coaching Bangalore, online personal trainer Bangalore, body recomposition coach India, fat loss coach Bangalore, '
+            . 'metabolic reset program, remote fitness coaching India, functional fitness Bangalore, online strength training India';
     } elseif ( is_singular() && ! empty( $post ) ) {
         $keywords = wp_strip_all_tags( get_the_tags( $post->ID ) ? implode( ', ', wp_list_pluck( get_the_tags( $post->ID ), 'name' ) ) : '' );
     } else {
-        $keywords = 'CrossFit Bangalore, online fitness coach India, functional fitness, body recomposition, TNA ShredX';
+        $keywords = 'The Notorious Alpha, TNAShredX, TNA ShredX, online gym, CrossFit Bangalore, online fitness coach India, functional fitness, body recomposition';
     }
 
     $title = esc_attr( wp_get_document_title() );
